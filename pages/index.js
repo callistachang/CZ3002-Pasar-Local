@@ -1,9 +1,14 @@
 import Image from "next/image"
+import { Button, DatePicker } from "antd"
 
-export default function Home() {
+const Home = () => {
   return (
-    <div>
+    <>
       <Image src="/logo.svg" alt="Vercel Logo" width={200} height={200} />
-    </div>
+      <Button type="primary">PRESS ME</Button>
+      <DatePicker placeholder="select date" />
+    </>
   )
 }
+
+export default Home

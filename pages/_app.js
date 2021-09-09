@@ -1,7 +1,9 @@
 import Head from "next/head"
+import Script from "next/script"
 import "../styles/index.css"
+import "antd/dist/antd.css"
 
-function MyApp({ Component, pageProps }) {
+const MyApp = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
@@ -13,11 +15,14 @@ function MyApp({ Component, pageProps }) {
           rel="stylesheet"
           href="https://cdn.snipcart.com/themes/v3.0.16/default/snipcart.css"
         />
-        <script
-          async
-          src="https://cdn.snipcart.com/themes/v3.0.16/default/snipcart.js"
-        />
       </Head>
+      <Script src="https://cdn.snipcart.com/themes/v3.0.16/default/snipcart.js" />
+      <Script
+        src="https://account.snatchbot.me/script.js"
+        onLoad={() => {
+          window.sntchChat.Init(133961)
+        }}
+      />
       <Component {...pageProps} />
     </>
   )
