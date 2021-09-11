@@ -1,12 +1,14 @@
 import Image from "next/image"
 import { Button, DatePicker } from "antd"
+import GeneralLayout from "../components/layout/GeneralLayout"
+import BannerCarousel from "../components/home/BannerCarousel"
 
 const Home = () => {
   return (
     <>
-      <Image src="/logo.svg" alt="Vercel Logo" width={200} height={200} />
-      <Button type="primary">PRESS ME</Button>
-      <DatePicker placeholder="select date" />
+      <GeneralLayout>
+        <BannerCarousel />
+      </GeneralLayout>
     </>
   )
 }

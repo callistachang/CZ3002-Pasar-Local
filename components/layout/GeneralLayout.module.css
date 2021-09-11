@@ -1,0 +1,24 @@
+.siteLayoutContent {
+  min-height: 280px;
+  padding: 24px;
+  background: white;
+}
+
+.logo {
+  float: left;
+  width: 146px;
+  height: 40px;
+  font-family: "Courgette";
+  font-size: 24px;
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+}
+
+.logo:hover {
+  color: #f5c84c;
+}
+
+.floatRight {
+  float: right;
+}
