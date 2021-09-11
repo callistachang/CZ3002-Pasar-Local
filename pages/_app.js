@@ -17,12 +17,12 @@ const MyApp = ({ Component, pageProps }) => {
         />
       </Head>
       <Script src="https://cdn.snipcart.com/themes/v3.0.16/default/snipcart.js" />
-      <Script
+      {/* <Script
         src="https://account.snatchbot.me/script.js"
         onLoad={() => {
           window.sntchChat.Init(133961)
         }}
-      />
+      /> */}
       <Component {...pageProps} />
     </>
   )
