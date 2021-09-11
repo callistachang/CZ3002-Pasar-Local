@@ -1,9 +1,8 @@
-import { Layout, Form, Input, Button, Checkbox, Space } from "antd"
-import { UserOutlined } from "@ant-design/icons"
-import React, { useState } from "react"
+import { Button, Form, Input, Space } from "antd"
+import React from "react"
 import GeneralLayout from "../components/layout/GeneralLayout"
 
-const Demo = () => {
+const CustomerLogin = () => {
   const onFinish = (values) => {
     console.log("Success:", values)
   }
@@ -51,4 +50,4 @@ const Demo = () => {
   )
 }
 
-export default Demo
+export default CustomerLogin

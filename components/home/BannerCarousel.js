@@ -1,5 +1,4 @@
-import { Carousel, Layout } from "antd"
-import Image from "next/image"
+import { Carousel } from "antd"
 import React from "react"
 import styles from "./BannerCarousel.module.css"
 

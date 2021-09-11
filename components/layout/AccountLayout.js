@@ -1,31 +1,24 @@
-import { Layout, Menu } from "antd"
 import {
-  MenuUnfoldOutlined,
-  MenuFoldOutlined,
-  UserOutlined,
   UnorderedListOutlined,
   UploadOutlined,
+  UserOutlined,
 } from "@ant-design/icons"
-import React, { useState } from "react"
-import styles from "./Layout.module.css"
+import { Layout, Menu } from "antd"
 import { useRouter } from "next/dist/client/router"
+import React from "react"
+import styles from "./Layout.module.css"
 
-const { Header, Sider, Content, Footer } = Layout
+const { Sider, Content, Footer } = Layout
 
 const AccountLayout = (props) => {
-  const [collapsed, setCollapsed] = useState(false)
   const router = useRouter()
-
-  const toggle = () => {
-    setCollapsed(!collapsed)
-  }
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <Sider
         trigger={null}
         collapsible
-        collapsed={collapsed}
+        collapsed={false}
         style={{
           overflow: "auto",
           height: "100vh",
@@ -53,13 +46,6 @@ const AccountLayout = (props) => {
         </Menu>
       </Sider>
       <Layout>
-        {/* <Header className={styles.siteLayoutBackground}>
-          {collapsed ? (
-            <MenuUnfoldOutlined className={styles.trigger} onClick={toggle} />
-          ) : (
-            <MenuFoldOutlined className={styles.trigger} onClick={toggle} />
-          )}
-        </Header> */}
         <Content className={styles.siteLayoutBackground}>
           {props.children}
         </Content>

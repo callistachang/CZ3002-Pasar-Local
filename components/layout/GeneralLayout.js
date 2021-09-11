@@ -1,16 +1,16 @@
-import { Layout, Menu, Breadcrumb, Row, Col } from "antd"
-import styles from "./Layout.module.css"
-
 import {
-  TeamOutlined,
-  ShopOutlined,
   HeartOutlined,
+  ShopOutlined,
+  TeamOutlined,
   UserOutlined,
 } from "@ant-design/icons"
-const { Header, Content, Footer } = Layout
-
+import { Layout, Menu } from "antd"
+import SubMenu from "antd/lib/menu/SubMenu"
 import { useRouter } from "next/dist/client/router"
 import Cart from "./Cart"
+import styles from "./Layout.module.css"
+
+const { Header, Content, Footer } = Layout
 
 const GeneralLayout = (props) => {
   const router = useRouter()

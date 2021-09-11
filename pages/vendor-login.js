@@ -1,17 +1,7 @@
-import { Layout, Menu } from "antd"
-import {
-  MenuUnfoldOutlined,
-  MenuFoldOutlined,
-  UserOutlined,
-  UnorderedListOutlined,
-  UploadOutlined,
-} from "@ant-design/icons"
-import React, { useState } from "react"
+import React from "react"
 import AccountLayout from "../components/layout/AccountLayout"
 
-const { Header, Sider, Content } = Layout
-
-const SiderDemo = () => {
+const VendorLogin = () => {
   return (
     <AccountLayout>
       <iframe
@@ -28,4 +18,4 @@ const SiderDemo = () => {
   )
 }
 
-export default SiderDemo
+export default VendorLogin
