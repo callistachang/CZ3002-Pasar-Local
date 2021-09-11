@@ -1,5 +1,5 @@
 import { Layout, Menu, Breadcrumb, Row, Col } from "antd"
-import styles from "./GeneralLayout.module.css"
+import styles from "./Layout.module.css"
 
 import {
   TeamOutlined,
@@ -84,7 +84,7 @@ const GeneralLayout = (props) => {
       </Header>
       <Content style={{ padding: "0 5em" }}>{props.children}</Content>
       <Footer style={{ textAlign: "center" }}>
-        Pasar Local ©2021 Created by Team SmartLocal
+        Pasar Local © 2021 Created by Team SmartLocal
       </Footer>
     </Layout>
   )

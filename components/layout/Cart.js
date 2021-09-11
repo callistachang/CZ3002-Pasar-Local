@@ -4,8 +4,9 @@ const Cart = () => {
   return (
     <>
       <div className="snipcart-checkout">
-        <ShoppingCartOutlined style={{ fontSize: "20px" }} />
-        {/* <span className="snipcart-total-price"></span> */}
+        <ShoppingCartOutlined
+          style={{ fontSize: "20px", padding: "0 0 0 0.4em" }}
+        />
       </div>
     </>
   )

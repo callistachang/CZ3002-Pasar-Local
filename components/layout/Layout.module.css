@@ -22,3 +22,8 @@
 .floatRight {
   float: right;
 }
+
+.siteLayoutBackground {
+  background: white;
+  margin: 0 14em;
+}

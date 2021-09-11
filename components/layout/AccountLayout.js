@@ -7,18 +7,21 @@ import {
   UploadOutlined,
 } from "@ant-design/icons"
 import React, { useState } from "react"
+import styles from "./Layout.module.css"
+import { useRouter } from "next/dist/client/router"
 
-const { Header, Sider, Content } = Layout
+const { Header, Sider, Content, Footer } = Layout
 
-const SiderDemo = () => {
+const AccountLayout = (props) => {
   const [collapsed, setCollapsed] = useState(false)
+  const router = useRouter()
 
   const toggle = () => {
     setCollapsed(!collapsed)
   }
 
   return (
-    <Layout>
+    <Layout style={{ minHeight: "100vh" }}>
       <Sider
         trigger={null}
         collapsible
@@ -26,12 +29,17 @@ const SiderDemo = () => {
         style={{
           overflow: "auto",
           height: "100vh",
-          // position: "fixed",
+          position: "fixed",
           left: 0,
         }}
       >
-        <div className="logo">Pasar Local</div>
-        {/* <div className="logo" /> */}
+        <a
+          className={styles.logo}
+          style={{ margin: "0.3em 1.5em" }}
+          onClick={() => router.push("/")}
+        >
+          Pasar Local
+        </a>
         <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
           <Menu.Item key="1" icon={<UserOutlined />}>
             My Account
@@ -44,27 +52,23 @@ const SiderDemo = () => {
           </Menu.Item>
         </Menu>
       </Sider>
-      <Layout className="site-layout">
-        <Header className="site-layout-background" style={{ padding: 0 }}>
+      <Layout>
+        {/* <Header className={styles.siteLayoutBackground}>
           {collapsed ? (
-            <MenuUnfoldOutlined className="trigger" onClick={toggle} />
+            <MenuUnfoldOutlined className={styles.trigger} onClick={toggle} />
           ) : (
-            <MenuFoldOutlined className="trigger" onClick={toggle} />
+            <MenuFoldOutlined className={styles.trigger} onClick={toggle} />
           )}
-        </Header>
-        <Content
-          className="site-layout-background"
-          style={{
-            margin: "24px 16px",
-            padding: 24,
-            padding: "overflow",
-          }}
-        >
-          .../
+        </Header> */}
+        <Content className={styles.siteLayoutBackground}>
+          {props.children}
         </Content>
+        <Footer style={{ textAlign: "center" }}>
+          Pasar Local © 2021 Created by Team SmartLocal
+        </Footer>
       </Layout>
     </Layout>
   )
 }
 
-export default SiderDemo
+export default AccountLayout
