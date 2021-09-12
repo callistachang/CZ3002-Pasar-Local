@@ -1,5 +1,6 @@
 import { HomeOutlined, UserOutlined } from "@ant-design/icons"
 import { Breadcrumb, Col, Layout, Pagination, Row } from "antd"
+import { useRouter } from "next/dist/client/router"
 import GeneralLayout from "../../components/layout/GeneralLayout"
 import VendorCard from "../../components/vendor/VendorCard"
 import VendorCardList from "../../components/vendor/VendorCardList"
@@ -7,7 +8,9 @@ import VendorPageSidebar from "../../components/vendor/VendorPageSidebar"
 
 const { Header, Footer, Sider, Content } = Layout
 
-const VendorList = () => {
+const VendorCategory = () => {
+  const router = useRouter()
+  const { category } = router.query
   return (
     <>
       <GeneralLayout activeMenuItem="vendors">
@@ -19,8 +22,7 @@ const VendorList = () => {
             Categories
           </Breadcrumb.Item>
           <Breadcrumb.Item href="">
-            {/* <UserOutlined /> */}
-            <span>Fashion</span>
+            <span>{category}</span>
           </Breadcrumb.Item>
         </Breadcrumb>
 
@@ -37,4 +39,4 @@ const VendorList = () => {
   )
 }
 
-export default VendorList
+export default VendorCategory
