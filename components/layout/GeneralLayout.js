@@ -94,18 +94,16 @@ const GeneralLayout = (props) => {
             <Cart />
           </Menu.Item>
 
-          {session
-            ? rightAlignedMenuItems.map((item) => (
-                <Menu.Item
-                  className={styles.floatRight}
-                  key={item.key}
-                  icon={item.icon}
-                  onClick={() => router.push(item.href)}
-                >
-                  {item.name}
-                </Menu.Item>
-              ))
-            : "aaa"}
+          {rightAlignedMenuItems.map((item) => (
+            <Menu.Item
+              className={styles.floatRight}
+              key={item.key}
+              icon={item.icon}
+              onClick={() => router.push(item.href)}
+            >
+              {item.name}
+            </Menu.Item>
+          ))}
         </Menu>
       </Header>
       <Content style={{ padding: "0 5em" }}>{props.children}</Content>
