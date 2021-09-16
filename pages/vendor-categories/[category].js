@@ -11,6 +11,9 @@ const { Header, Footer, Sider, Content } = Layout
 const VendorCategory = () => {
   const router = useRouter()
   const { category } = router.query
+
+  console.log(category)
+  // const categoryStr = category.charAt(0).toUpperCase() + category.slice(1)
   return (
     <>
       <GeneralLayout activeMenuItem="vendors">
