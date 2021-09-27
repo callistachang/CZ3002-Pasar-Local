@@ -1,7 +1,10 @@
 .siteLayoutContent {
-  min-height: 280px;
-  padding: 24px;
-  background: white;
+  min-height: 100vh;
+}
+@media only screen and (max-width: 600px) {
+  .menuContent {
+    font-size: 12px;
+  }
 }
 
 .logo {

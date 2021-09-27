@@ -1,5 +1,6 @@
 import { Layout } from "antd"
 import { useRouter } from "next/dist/client/router"
+import Media from "react-media"
 import styles from "./Layout.module.css"
 import Navbar from "./Navbar"
 
@@ -9,11 +10,16 @@ const GeneralLayout = (props) => {
   const router = useRouter()
 
   return (
-    <Layout style={{ minHeight: "100vh" }}>
+    <Layout className={styles.siteLayoutContent}>
       <Header>
-        <a className={styles.logo} onClick={() => router.push("/")}>
-          Pasar Local
-        </a>
+        <Media
+          query="(min-width: 600px)"
+          render={() => (
+            <a className={styles.logo} onClick={() => router.push("/")}>
+              Pasar Local
+            </a>
+          )}
+        />
         <Navbar activeMenuItem={props.activeMenuItem} />
       </Header>
       <Content style={{ padding: "0 5em" }}>{props.children}</Content>

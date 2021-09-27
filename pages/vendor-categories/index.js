@@ -14,7 +14,9 @@ const VendorCategories = () => {
         <Breadcrumb.Item href="/">
           <HomeOutlined />
         </Breadcrumb.Item>
-        <Breadcrumb.Item href="/vendor-categories">Categories</Breadcrumb.Item>
+        <Breadcrumb.Item href="/vendor-categories">
+          Vendor Categories
+        </Breadcrumb.Item>
       </Breadcrumb>
 
       <Row gutter={[20, 20]} style={{ paddingTop: "2em" }}>

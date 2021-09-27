@@ -12,80 +12,84 @@ import { useRouter } from "next/dist/client/router"
 import Cart from "./Cart"
 import styles from "./Layout.module.css"
 import { useSession } from "next-auth/client"
+import { useState } from "react"
 
 const Navbar = (props) => {
   const router = useRouter()
   const [session, loading] = useSession()
 
   return (
-    <Menu
-      theme="dark"
-      mode="horizontal"
-      defaultSelectedKeys={[props.activeMenuItem]}
-    >
-      <SubMenu
-        key="vendors"
-        icon={<TeamOutlined />}
-        title="Vendors"
-        onTitleClick={() => router.push("/vendor-categories")}
+    <>
+      <Menu
+        theme="dark"
+        mode="horizontal"
+        defaultSelectedKeys={[props.activeMenuItem]}
+        className={styles.menuContent}
       >
-        <Menu.Item
-          key="vendors:fashion"
-          icon={<SkinOutlined />}
-          onClick={() => router.push("/vendor-categories/fashion")}
+        <SubMenu
+          key="vendors"
+          icon={<TeamOutlined />}
+          title="Vendors"
+          onTitleClick={() => router.push("/vendor-categories")}
         >
-          Fashion
-        </Menu.Item>
+          <Menu.Item
+            key="vendors:fashion"
+            icon={<SkinOutlined />}
+            onClick={() => router.push("/vendor-categories/fashion")}
+          >
+            Fashion
+          </Menu.Item>
+          <Menu.Item
+            key="vendors:food"
+            icon={<CoffeeOutlined />}
+            onClick={() => router.push("/vendor-categories/food")}
+          >
+            Food
+          </Menu.Item>
+        </SubMenu>
+
         <Menu.Item
-          key="vendors:food"
-          icon={<CoffeeOutlined />}
-          onClick={() => router.push("/vendor-categories/food")}
+          key="products"
+          icon={<ShopOutlined />}
+          onClick={() => router.push("/products")}
         >
-          Food
+          Marketplace
         </Menu.Item>
-      </SubMenu>
 
-      <Menu.Item
-        key="products"
-        icon={<ShopOutlined />}
-        onClick={() => router.push("/products")}
-      >
-        Marketplace
-      </Menu.Item>
-
-      <Menu.Item className={styles.floatRight}>
-        <Cart />
-      </Menu.Item>
-
-      {/* User is logged in */}
-      {session && (
         <Menu.Item className={styles.floatRight}>
-          Signed in as {session.user.name} (User)
+          <Cart />
         </Menu.Item>
-      )}
 
-      {/* User is not logged in */}
-      {!session && (
-        <>
-          <Menu.Item
-            className={styles.floatRight}
-            key="Customer Login"
-            icon={<UserOutlined />}
-            onClick={() => router.push("/customer-login")}
-          >
-            Customer Login
+        {/* User is logged in */}
+        {session && (
+          <Menu.Item className={styles.floatRight}>
+            Signed in as {session.user.name} (User)
           </Menu.Item>
-          <Menu.Item
-            className={styles.floatRight}
-            key="Vendor Login"
-            icon={<HeartOutlined />}
-            onClick={() => router.push("/vendor-login")}
-          >
-            Vendor Login
-          </Menu.Item>
-        </>
-      )}
-    </Menu>
+        )}
+
+        {/* User is not logged in */}
+        {!session && (
+          <>
+            <Menu.Item
+              className={styles.floatRight}
+              key="Customer Login"
+              icon={<UserOutlined />}
+              onClick={() => router.push("/customer-login")}
+            >
+              Customer Login
+            </Menu.Item>
+            <Menu.Item
+              className={styles.floatRight}
+              key="Vendor Login"
+              icon={<HeartOutlined />}
+              onClick={() => router.push("/vendor-login")}
+            >
+              Vendor Login
+            </Menu.Item>
+          </>
+        )}
+      </Menu>
+    </>
   )
 }
 

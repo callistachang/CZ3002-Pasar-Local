@@ -30,10 +30,10 @@ const VendorCategory = () => {
         </Breadcrumb>
 
         <Row gutter={[20, 20]} style={{ paddingTop: "2em" }}>
-          <Col span={4}>
+          <Col sm={{ span: 4 }}>
             <VendorPageSidebar />
           </Col>
-          <Col span={20}>
+          <Col sm={{ span: 20 }}>
             <VendorCardList />
           </Col>
         </Row>
