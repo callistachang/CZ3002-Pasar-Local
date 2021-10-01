@@ -6,7 +6,7 @@ const Cart = () => {
     <>
       <div className="snipcart-checkout">
         <ShoppingCartOutlined style={{ fontSize: "20px" }} />
-        <span class="snipcart-items-count"></span>
+        <span className="snipcart-items-count"></span>
       </div>
     </>
   )
