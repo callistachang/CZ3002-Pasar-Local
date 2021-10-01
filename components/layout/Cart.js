@@ -1,12 +1,12 @@
 import { ShoppingCartOutlined } from "@ant-design/icons"
+import { Button } from "antd"
 
 const Cart = () => {
   return (
     <>
       <div className="snipcart-checkout">
-        <ShoppingCartOutlined
-          style={{ fontSize: "20px", padding: "0 0 0 0.4em" }}
-        />
+        <ShoppingCartOutlined style={{ fontSize: "20px" }} />
+        <span class="snipcart-items-count"></span>
       </div>
     </>
   )

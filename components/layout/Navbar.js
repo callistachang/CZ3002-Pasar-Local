@@ -6,7 +6,7 @@ import {
   SkinOutlined,
   CoffeeOutlined,
 } from "@ant-design/icons"
-import { Menu } from "antd"
+import { Button, Menu, Row } from "antd"
 import SubMenu from "antd/lib/menu/SubMenu"
 import { useRouter } from "next/dist/client/router"
 import Cart from "./Cart"
@@ -57,7 +57,9 @@ const Navbar = (props) => {
         </Menu.Item>
 
         <Menu.Item className={styles.floatRight}>
-          <Cart />
+          <Row>
+            <Cart />
+          </Row>
         </Menu.Item>
 
         {/* User is logged in */}

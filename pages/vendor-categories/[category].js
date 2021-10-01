@@ -25,7 +25,7 @@ const VendorCategory = () => {
             Categories
           </Breadcrumb.Item>
           <Breadcrumb.Item href="">
-            <span>{category}</span>
+            <span>{category.charAt(0).toUpperCase() + category.slice(1)}</span>
           </Breadcrumb.Item>
         </Breadcrumb>
 
