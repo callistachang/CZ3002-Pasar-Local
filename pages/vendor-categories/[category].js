@@ -12,8 +12,6 @@ const VendorCategory = () => {
   const router = useRouter()
   const { category } = router.query
 
-  console.log(category)
-  // const categoryStr = category.charAt(0).toUpperCase() + category.slice(1)
   return (
     <>
       <GeneralLayout activeMenuItem="vendors">
@@ -25,7 +23,7 @@ const VendorCategory = () => {
             Categories
           </Breadcrumb.Item>
           <Breadcrumb.Item href="">
-            <span>{category.charAt(0).toUpperCase() + category.slice(1)}</span>
+            <span>{category}</span>
           </Breadcrumb.Item>
         </Breadcrumb>
 
