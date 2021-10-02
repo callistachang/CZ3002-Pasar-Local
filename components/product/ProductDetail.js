@@ -52,7 +52,9 @@ const ProductDetail = (props) => {
               class="snipcart-add-item"
               data-item-id={props.id}
               data-item-price={props.price}
-              data-item-url={"/products/" + props.id}
+              data-item-url={
+                "https://pasar-local.vercel.app/products/" + props.id
+              }
               data-item-description={props.description}
               data-item-image="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
               data-item-name={props.name}
