@@ -8,7 +8,7 @@ import ProductDetail from "../../components/product/ProductDetail"
 
 const Product = () => {
   const router = useRouter()
-  const { id } = router.query
+  const { id } = router.query.toString()
   const data = {
     name: "MOTF PREMIUM VISCOSE MIDI SHIRT DRESS",
     price: 24.48,
