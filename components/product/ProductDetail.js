@@ -6,6 +6,7 @@ import Image from "next/image"
 const { Meta } = Card
 
 const ProductDetail = (props) => {
+  console.log(props)
   return (
     <>
       <Row gutter={[40, 20]}>
@@ -49,7 +50,7 @@ const ProductDetail = (props) => {
               block
               icon={<ShoppingOutlined />}
               size="large"
-              class="snipcart-add-item"
+              className="snipcart-add-item"
               data-item-id={props.id}
               data-item-price={props.price}
               data-item-url={
