@@ -50,7 +50,7 @@ const ProductDetail = (props) => {
               icon={<ShoppingOutlined />}
               size="large"
               class="snipcart-add-item"
-              data-item-id={props.id}
+              data-item-id={props.id.toString()}
               data-item-price={props.price}
               data-item-url={
                 "https://pasar-local.vercel.app/products/" + props.id
