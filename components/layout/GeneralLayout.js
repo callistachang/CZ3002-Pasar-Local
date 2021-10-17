@@ -22,10 +22,16 @@ const GeneralLayout = (props) => {
         />
         <Navbar activeMenuItem={props.activeMenuItem} />
       </Header>
-      <Content style={{ padding: "0 5em" }}>{props.children}</Content>
-      <Footer style={{ textAlign: "center" }}>
-        Pasar Local © 2021 Created by Team SmartLocal
-      </Footer>
+      {props.noPadding ? (
+        <Content>{props.children}</Content>
+      ) : (
+        <Content style={{ padding: "0 5em" }}>{props.children}</Content>
+      )}
+      {!props.noFooter && (
+        <Footer style={{ textAlign: "center" }}>
+          Pasar Local © 2021 Created by Team SmartLocal
+        </Footer>
+      )}
     </Layout>
   )
 }

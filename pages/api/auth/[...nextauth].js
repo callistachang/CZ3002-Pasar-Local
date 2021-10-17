@@ -7,6 +7,10 @@ export default NextAuth({
     Providers.Google({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
+      profile: async (profile) => {
+        profile.image = "buyer" // oh boy, I guess this hack will have to do
+        return profile
+      },
     }),
     Providers.Credentials({
       name: "Credentials",
@@ -19,7 +23,11 @@ export default NextAuth({
         console.log(credentials.password)
         // TODO: use the email and password to login via firebase
         // return null if not found
-        const user = { name: "J Smith", email: "jsmith@example.com" }
+        const user = {
+          name: "J Smith",
+          email: "jsmith@example.com",
+          image: "vendor", // don't ask me
+        }
         if (user) {
           return user
         } else {
@@ -29,8 +37,14 @@ export default NextAuth({
     }),
   ],
   callbacks: {
-    redirect({ url, baseUrl }) {
+    redirect: ({ url, baseUrl }) => {
       return baseUrl
+    },
+    session: async (session, user) => {
+      console.log("data passed to object when signed in", user)
+      console.log(session)
+      //  user object there doesn't have all data passed before
+      return session
     },
   },
   // A database is optional, but required to persist accounts in a database
