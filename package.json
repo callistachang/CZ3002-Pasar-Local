@@ -15,8 +15,6 @@
     "antd": "4.15.6",
     "firebase": "^9.0.2",
     "google-map-react": "^2.1.10",
-    "mobx": "^6.3.3",
-    "mobx-react": "^7.2.0",
     "next": "11.1.2",
     "next-auth": "^3.29.0",
     "next-plugin-antd-less": "^1.4.2",

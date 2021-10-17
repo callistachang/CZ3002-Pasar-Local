@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import AccountLayout from "../components/layout/AccountLayout"
 import GeneralLayout from "../components/layout/GeneralLayout"
 import GoogleMapReact from "google-map-react"
 
