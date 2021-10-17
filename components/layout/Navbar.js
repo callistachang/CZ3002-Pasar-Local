@@ -5,13 +5,15 @@ import {
   UserOutlined,
   SkinOutlined,
   CoffeeOutlined,
+  ProfileOutlined,
+  LogoutOutlined,
 } from "@ant-design/icons"
 import { Button, Menu, Row } from "antd"
 import SubMenu from "antd/lib/menu/SubMenu"
 import { useRouter } from "next/dist/client/router"
 import Cart from "./Cart"
 import styles from "./Layout.module.css"
-import { useSession } from "next-auth/client"
+import { signOut, useSession } from "next-auth/client"
 import { useState } from "react"
 
 const Navbar = (props) => {
@@ -30,19 +32,19 @@ const Navbar = (props) => {
           key="vendors"
           icon={<TeamOutlined />}
           title="Vendors"
-          onTitleClick={() => router.push("/vendor-categories")}
+          // onTitleClick={() => router.push("/vendor-categories")}
         >
           <Menu.Item
             key="vendors:fashion"
             icon={<SkinOutlined />}
-            onClick={() => router.push("/vendor-categories/fashion")}
+            onClick={() => router.push("/vendors/categories/Fashion")}
           >
             Fashion
           </Menu.Item>
           <Menu.Item
             key="vendors:food"
             icon={<CoffeeOutlined />}
-            onClick={() => router.push("/vendor-categories/food")}
+            onClick={() => router.push("/vendors/categories/Food")}
           >
             Food
           </Menu.Item>
@@ -62,14 +64,30 @@ const Navbar = (props) => {
           </Row>
         </Menu.Item>
 
-        {/* User is logged in */}
         {session && (
-          <Menu.Item className={styles.floatRight}>
-            Signed in as {session.user.name} (User)
-          </Menu.Item>
+          <SubMenu
+            key="me"
+            icon={<UserOutlined />}
+            title={session.user.name}
+            className={styles.floatRight}
+          >
+            <Menu.Item
+              key="me:profile"
+              icon={<ProfileOutlined />}
+              onClick={() => router.push("/profile")}
+            >
+              My Profile
+            </Menu.Item>
+            <Menu.Item
+              key="me:logout"
+              icon={<LogoutOutlined />}
+              onClick={() => signOut()}
+            >
+              Sign Out
+            </Menu.Item>
+          </SubMenu>
         )}
 
-        {/* User is not logged in */}
         {!session && (
           <>
             <Menu.Item

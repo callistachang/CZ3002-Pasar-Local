@@ -1,12 +1,9 @@
 import { HomeOutlined, UserOutlined } from "@ant-design/icons"
 import { Breadcrumb, Col, Layout, Pagination, Row } from "antd"
 import { useRouter } from "next/dist/client/router"
-import GeneralLayout from "../../components/layout/GeneralLayout"
-import VendorCard from "../../components/vendor/VendorCard"
-import VendorCardList from "../../components/vendor/VendorCardList"
-import VendorPageSidebar from "../../components/vendor/VendorPageSidebar"
-
-const { Header, Footer, Sider, Content } = Layout
+import GeneralLayout from "../../../components/layout/GeneralLayout"
+import VendorCardList from "../../../components/vendor/VendorCardList"
+import VendorPageSidebar from "../../../components/vendor/VendorPageSidebar"
 
 const VendorCategory = () => {
   const router = useRouter()

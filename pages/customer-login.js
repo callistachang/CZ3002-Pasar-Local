@@ -1,6 +1,6 @@
 import { GoogleCircleFilled } from "@ant-design/icons"
-import { Button, Form, Input, Row, Space } from "antd"
-import { getProviders, signIn, useSession } from "next-auth/client"
+import { Button, Form, Input, Row, Space, Divider } from "antd"
+import { getProviders, signIn, useSession, signOut } from "next-auth/client"
 import { useRouter } from "next/router"
 import React from "react"
 import GeneralLayout from "../components/layout/GeneralLayout"
@@ -23,54 +23,23 @@ const CustomerLogin = ({ providers }) => {
 
   return (
     <GeneralLayout activeMenuItem="customer-login">
-      {/* <Space direction="vertical">
-        <Form
-          name="basic"
-          // labelCol={{ span: 8 }}
-          // wrapperCol={{ span: 16 }}
-          initialValues={{}}
-          onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
-          autoComplete="off"
-        >
-          <Form.Item
-            label="Username"
-            name="username"
-            rules={[{ required: true, message: "Please input your username" }]}
-          >
-            <Input />
-          </Form.Item>
+      <div style={{ padding: "2em" }}>
+        <Divider style={{ fontWeight: "bold", fontSize: "2em" }}>
+          Login as Customer
+        </Divider>
 
-          <Form.Item
-            label="Password"
-            name="password"
-            rules={[{ required: true, message: "Please input your password" }]}
+        <Row justify="center" align="middle">
+          <Button
+            type="primary"
+            shape="round"
+            icon={<GoogleCircleFilled />}
+            size="large"
+            onClick={() => signIn("google")}
           >
-            <Input.Password />
-          </Form.Item>
-
-          <Form.Item>
-            <Button type="primary" htmlType="submit">
-              Submit
-            </Button>
-          </Form.Item>
-        </Form>
-      </Space> */}
-      <Row justify="center" align="middle" style={{ minHeight: "80vh" }}>
-        {Object.values(providers).map((provider) => (
-          <div key={provider.name}>
-            <Button
-              type="primary"
-              shape="round"
-              icon={<GoogleCircleFilled />}
-              size="large"
-              onClick={() => signIn(provider.id)}
-            >
-              Sign in with {provider.name}
-            </Button>
-          </div>
-        ))}
-      </Row>
+            Sign in with Google
+          </Button>
+        </Row>
+      </div>
     </GeneralLayout>
   )
 }
