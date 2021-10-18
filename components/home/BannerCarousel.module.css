@@ -1,7 +1,14 @@
 .contentStyle {
-  height: 360px;
+  /* height: 360px; */
+  min-width: 100vw;
   color: #fff;
   line-height: 360px;
   text-align: center;
   background: #364d79;
 }
+/* .fill {
+  /* min-width: 100vw; */
+/* min-height: 100%;
+  width: auto;
+  height: auto; */
+/* } */

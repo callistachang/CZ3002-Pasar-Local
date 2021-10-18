@@ -13,7 +13,7 @@ const Home = () => {
 
   return (
     <>
-      <GeneralLayout>
+      <GeneralLayout noPadding>
         <BannerCarousel />
         {vendors.map((vendor) => (
           <>
