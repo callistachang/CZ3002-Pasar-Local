@@ -1,5 +1,5 @@
 import { UnorderedListOutlined, UserOutlined } from "@ant-design/icons"
-import { Layout, Menu } from "antd"
+import { Descriptions, Layout, Menu } from "antd"
 import { useSession } from "next-auth/client"
 
 const { Sider, Content, Footer } = Layout
@@ -32,7 +32,11 @@ const BuyerProfile = () => {
               minHeight: "91.2vh",
             }}
           >
-            Buyer Profile
+            <Descriptions title="Buyer Profile" bordered>
+              <Descriptions.Item label="Name" span={3}>get user name</Descriptions.Item>
+              <Descriptions.Item label="Email" span={3}>get user email</Descriptions.Item>
+              <Descriptions.Item label="Address" span={3}>get user address</Descriptions.Item>
+            </Descriptions>,
           </Content>
         </Layout>
       </Layout>
