@@ -20,8 +20,8 @@ const ProductDetail = (props) => {
         </Col>
         <Col sm={{ span: 14 }} gutter={[16, 24]}>
           <Descriptions title={props.name} bordered>
-            <Descriptions.Item label="Vendor" span={3}>
-              Nice Shop
+            <Descriptions.Item label="Name" span={3}>
+              {props.name}
             </Descriptions.Item>
             <Descriptions.Item label="Price" span={3}>
               ${props.price}

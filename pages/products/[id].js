@@ -1,5 +1,5 @@
 import { HomeOutlined } from "@ant-design/icons"
-import { Breadcrumb, Col, Row } from "antd"
+import { Breadcrumb, Col, Divider, Row } from "antd"
 import { useRouter } from "next/router"
 import GeneralLayout from "../../components/layout/GeneralLayout"
 import ProductCardList from "../../components/product/ProductCardList"
@@ -24,7 +24,9 @@ const Product = (props) => {
 
       <div style={{ padding: "2em 15em" }}>
         <ProductDetail id={id} {...props.data} />
-        <div style={{ paddingTop: "2em" }}>More products you might like...</div>
+        <Divider orientation="left" style={{ fontSize: "2em" }}>
+          More products you might like
+        </Divider>
       </div>
     </GeneralLayout>
   )

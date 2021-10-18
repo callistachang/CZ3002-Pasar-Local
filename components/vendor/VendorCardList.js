@@ -19,7 +19,6 @@ const VendorCardList = () => {
 
   return (
     <>
-      <Divider style={{ fontSize: "2em" }}>Vendor List</Divider>
       <Pagination
         onChange={(pageNo) => {
           setPageNumber(pageNo)

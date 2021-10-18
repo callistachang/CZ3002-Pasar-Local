@@ -17,6 +17,15 @@ const ProductCardList = () => {
 
   return (
     <>
+      <Pagination
+        onChange={(pageNo) => {
+          setPageNumber(pageNo)
+          window.scrollTo({ top: 0, behavior: "smooth" })
+        }}
+        total={data.length}
+        style={{ textAlign: "center", paddingTop: "1em" }}
+      />
+      <br />
       <Row gutter={[24, 24]}>
         {data &&
           data.length > 0 &&
@@ -32,14 +41,6 @@ const ProductCardList = () => {
             </Col>
           ))}
       </Row>
-      <Pagination
-        onChange={(pageNo) => {
-          setPageNumber(pageNo)
-          window.scrollTo({ top: 0, behavior: "smooth" })
-        }}
-        total={data.length}
-        style={{ textAlign: "center", paddingTop: "1em" }}
-      />
     </>
   )
 }

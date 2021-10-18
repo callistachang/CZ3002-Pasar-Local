@@ -27,7 +27,7 @@ const VendorProfile = () => {
   return (
     <>
       <Layout>
-        <Sider width={250} handleClick={handleMenuClick}>
+        <Sider width={250}>
           <Menu
             theme="dark"
             mode="inline"
