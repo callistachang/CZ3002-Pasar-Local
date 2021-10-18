@@ -6,21 +6,34 @@ import {
 } from "@ant-design/icons"
 import { Row, Col, Image, Descriptions, Layout, Menu } from "antd"
 import { useSession } from "next-auth/client"
+import { useState } from "react"
 import styles from "../home/BannerCarousel.module.css"
+import VendorOrder from "../order/VendorOrder"
+import VendorInfo from "./VendorInfo"
 
 const { Sider, Content, Footer } = Layout
 const VendorProfile = () => {
-  const [session, loading] = useSession()
+  const [render, updateRender] = useState(1)
+
+  const components = {
+    1: <VendorInfo />, //If vendor clicks on the first menu item, the content shown is VendorInfo
+    4: <VendorOrder />,
+  }
+
+  const handleMenuClick = ({ key }) => {
+    updateRender(key)
+  }
 
   return (
     <>
       <Layout>
-        <Sider width={250}>
+        <Sider width={250} handleClick={handleMenuClick}>
           <Menu
             theme="dark"
             mode="inline"
-            defaultSelectedKeys={["1"]}
+            defaultSelectedKeys={[render]}
             style={{ height: "100%", borderRight: 0 }}
+            onClick={handleMenuClick}
           >
             <Menu.Item key="1" icon={<UserOutlined />}>
               My Profile
@@ -44,40 +57,7 @@ const VendorProfile = () => {
               minHeight: "91.2vh",
             }}
           >
-            <Row gutter={24}>
-              <Col span={10}>
-                <Image
-                  className={styles.contentStyle}
-                  alt={"vendor profile picture"}
-                  src="https://visme.co/blog/wp-content/uploads/2020/12/header-19.png"
-                />
-              </Col>
-              <Col span={12}>
-                <Descriptions bordered>
-                  <Descriptions.Item label="Name" span={3}>
-                    get user name
-                  </Descriptions.Item>
-                  <Descriptions.Item label="Email" span={3}>
-                    get user email
-                  </Descriptions.Item>
-                  <Descriptions.Item label="Description" span={3}>
-                    get user email
-                  </Descriptions.Item>
-                  <Descriptions.Item label="Website Link" span={3}>
-                    get website link
-                  </Descriptions.Item>
-                  <Descriptions.Item label="Social Media Links" span={3}>
-                    get social media
-                  </Descriptions.Item>
-                  <Descriptions.Item label="Address" span={3}>
-                    get user address
-                  </Descriptions.Item>
-                  <Descriptions.Item label="Category" span={3}>
-                    get user category
-                  </Descriptions.Item>
-                </Descriptions>
-              </Col>
-            </Row>
+            {components[render]}
           </Content>
         </Layout>
       </Layout>

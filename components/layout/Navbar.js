@@ -81,7 +81,9 @@ const Navbar = (props) => {
             <Menu.Item
               key="me:logout"
               icon={<LogoutOutlined />}
-              onClick={() => signOut()}
+              onClick={() =>
+                signOut({ callbackUrl: `${window.location.origin}` })
+              }
             >
               Sign Out
             </Menu.Item>
