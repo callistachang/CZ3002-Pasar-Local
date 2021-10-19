@@ -1,16 +1,23 @@
 import GoogleMapReact from "google-map-react"
 import { useState } from "react"
-import { Popover } from "antd"
+import { Button, Popover } from "antd"
 import { EnvironmentTwoTone } from "@ant-design/icons"
+import { Link } from "next/link"
+import { useRouter } from "next/dist/client/router"
 
 const VendorMap = () => {
+  const router = useRouter()
   const [markerList, setMarkerList] = useState([
     { id: "Vendor 1", lat: 1.35, lng: 103.82 },
     { id: "Vendor 2", lat: 1.36, lng: 103.82 },
   ])
   const AnyReactComponent = ({ text }) => (
     <Popover
-      content={<a href="/vendors/1">Visit Profile</a>}
+      content={
+        <Button type="link" onClick={() => router.push("/vendors/1")}>
+          Visit Profile
+        </Button>
+      }
       title={text}
       trigger="click"
     >

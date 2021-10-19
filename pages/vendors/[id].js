@@ -18,7 +18,7 @@ const Vendor = (props) => {
   const { id } = router.query
 
   return (
-    <GeneralLayout activeMenuItem="products">
+    <GeneralLayout activeMenuItem="vendors">
       <Breadcrumb style={{ padding: "2em 0.5em 0" }}>
         <Breadcrumb.Item href="/">
           <HomeOutlined />

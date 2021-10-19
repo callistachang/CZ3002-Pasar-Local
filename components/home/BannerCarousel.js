@@ -4,9 +4,18 @@ import styles from "./BannerCarousel.module.css"
 
 const BannerCarousel = () => {
   const carouselData = [
-    { src: "https://visme.co/blog/wp-content/uploads/2020/12/header-19.png" },
-    { src: "https://visme.co/blog/wp-content/uploads/2020/12/header-19.png" },
-    { src: "https://visme.co/blog/wp-content/uploads/2020/12/header-19.png" },
+    {
+      key: "1",
+      src: "https://visme.co/blog/wp-content/uploads/2020/12/header-19.png",
+    },
+    {
+      key: "2",
+      src: "https://visme.co/blog/wp-content/uploads/2020/12/header-19.png",
+    },
+    {
+      key: "3",
+      src: "https://visme.co/blog/wp-content/uploads/2020/12/header-19.png",
+    },
   ]
 
   return (
@@ -14,7 +23,8 @@ const BannerCarousel = () => {
       {carouselData.map((data) => (
         <Image
           className={styles.contentStyle}
-          alt={"Banner 1"}
+          alt={data.key}
+          key={data.key}
           src={data.src}
           preview={false}
         />
