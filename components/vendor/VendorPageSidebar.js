@@ -1,6 +1,5 @@
 import { Col, Divider, Input, Radio, Row, Slider, Space } from "antd"
 import { useState } from "react"
-import styles from "./Vendor.module.css"
 
 const VendorPageSidebar = () => {
   const [priceRange, setPriceRange] = useState([20, 50])
@@ -17,7 +16,7 @@ const VendorPageSidebar = () => {
   return (
     <Col>
       <Divider orientation="left">
-        <span className={styles.boldText}>Price Range</span>
+        <span styles={{ "font-weight": "bold" }}>Price Range</span>
       </Divider>
       <Slider
         range
@@ -32,7 +31,7 @@ const VendorPageSidebar = () => {
       </Row>
 
       <Divider orientation="left">
-        <span className={styles.boldText}>Categories</span>
+        <span styles={{ "font-weight": "bold" }}>Categories</span>
       </Divider>
       <Radio.Group onChange={updateCategoryRadioButtons} value={radioValue}>
         <Space direction="vertical">

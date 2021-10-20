@@ -46,17 +46,10 @@ const VendorCategory = (props) => {
           defaultZoom={11.5}
           popover
         />
-        <Row gutter={[20, 20]} style={{ paddingTop: "2em" }}>
-          <Col sm={{ span: 4 }}>
-            <VendorPageSidebar />
-          </Col>
-          <Col sm={{ span: 20 }}>
-            <Divider style={{ fontSize: "2em" }}>
-              {category} Vendor List
-            </Divider>
-            <VendorCardList data={props.data} />
-          </Col>
-        </Row>
+        <br />
+
+        <Divider style={{ fontSize: "2em" }}>{category} Vendor List</Divider>
+        <VendorCardList data={props.data} />
       </GeneralLayout>
     </>
   )

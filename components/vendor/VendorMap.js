@@ -15,14 +15,16 @@ const VendorMap = (props) => {
     props.popover ? (
       <Popover
         content={
-          <Button type="link" onClick={() => router.push(`/vendors/${id}`)}>
-            Visit Profile
-          </Button>
+          <a onClick={() => router.push(`/vendors/${id}`)}>Visit Profile</a>
         }
         title={text}
         trigger="click"
       >
-        <Avatar src={imageUrl} shape="square" />
+        <Avatar
+          src={imageUrl}
+          shape="square"
+          style={{ border: "1px solid #000" }}
+        />
       </Popover>
     ) : (
       // <Popover

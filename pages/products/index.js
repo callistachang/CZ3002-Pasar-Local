@@ -1,19 +1,16 @@
 import { HomeOutlined } from "@ant-design/icons"
 import { Breadcrumb, Col, Row } from "antd"
 import GeneralLayout from "../../components/layout/GeneralLayout"
-import ProductPageSidebar from "../../components/product/ProductPageSidebar"
 import ProductCardList from "../../components/product/ProductCardList"
 import { useState } from "react"
 import useAsyncEffect from "use-async-effect"
-import { getAllDocuments, getVendorsFromCategory } from "../../utils/api"
+import {
+  getAllDocuments,
+  getAllTags,
+  getVendorsFromCategory,
+} from "../../utils/api"
 
-const ProductsList = () => {
-  const [products, setProducts] = useState([])
-
-  useAsyncEffect(async () => {
-    setProducts(await getAllDocuments("product"))
-  }, [])
-
+const ProductsList = (props) => {
   return (
     <>
       <GeneralLayout activeMenuItem="products">
@@ -30,16 +27,24 @@ const ProductsList = () => {
         </Breadcrumb>
 
         <Row gutter={[20, 20]} style={{ paddingTop: "2em" }}>
-          <Col sm={{ span: 4 }}>
-            <ProductPageSidebar />
-          </Col>
-          <Col sm={{ span: 20 }}>
-            <ProductCardList data={products} />
-          </Col>
+          <ProductCardList data={props.data} />
         </Row>
       </GeneralLayout>
     </>
   )
+}
+export async function getStaticProps(context) {
+  // const data = await getVendorsFromCategory(context.params.category)
+  const data = await getAllDocuments("product")
+  const tags = await getAllTags()
+  console.log(tags)
+
+  return {
+    props: {
+      data,
+      tags,
+    },
+  }
 }
 
 export default ProductsList

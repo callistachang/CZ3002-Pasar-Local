@@ -93,3 +93,13 @@ export async function getAllIds(colName) {
   })
   return docIdsData
 }
+
+export async function getAllTags() {
+  // // const q = query(ref, where("vendorId", "==", vendorId))
+  // const docsSnap = await getDocs(collection(db, "product"))
+  // const docsData = docsSnap.docs.map((doc) => {
+  //   return doc.data().tags.keys()
+  // })
+  // return docsData
+  return null
+}

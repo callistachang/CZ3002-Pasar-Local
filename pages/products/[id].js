@@ -3,7 +3,6 @@ import { Breadcrumb, Col, Divider, Row } from "antd"
 import { useRouter } from "next/router"
 import GeneralLayout from "../../components/layout/GeneralLayout"
 import ProductCardList from "../../components/product/ProductCardList"
-import ProductPageSidebar from "../../components/product/ProductPageSidebar"
 import ProductDetail from "../../components/product/ProductDetail"
 import { getAllIds, getDocument } from "../../utils/api"
 
