@@ -1,33 +1,50 @@
 import GoogleMapReact from "google-map-react"
 import { useState } from "react"
-import { Button, Popover } from "antd"
+import { Avatar, Button, Popover } from "antd"
 import { EnvironmentTwoTone } from "@ant-design/icons"
 import { Link } from "next/link"
 import { useRouter } from "next/dist/client/router"
 
-const VendorMap = () => {
+const VendorMap = (props) => {
   const router = useRouter()
-  const [markerList, setMarkerList] = useState([
-    { id: "Vendor 1", lat: 1.35, lng: 103.82 },
-    { id: "Vendor 2", lat: 1.36, lng: 103.82 },
-  ])
-  const AnyReactComponent = ({ text }) => (
-    <Popover
-      content={
-        <Button type="link" onClick={() => router.push("/vendors/1")}>
-          Visit Profile
-        </Button>
-      }
-      title={text}
-      trigger="click"
-    >
-      <EnvironmentTwoTone twoToneColor="#eb2f96" style={{ fontSize: "2em" }} />
-    </Popover>
-  )
+  // const [markerList, setMarkerList] = useState([
+  //   { id: "Vendor 1", lat: 1.35, lng: 103.82 },
+  //   { id: "Vendor 2", lat: 1.36, lng: 103.82 },
+  // ])
+  const AnyReactComponent = ({ text, id, imageUrl }) =>
+    props.popover ? (
+      <Popover
+        content={
+          <Button type="link" onClick={() => router.push(`/vendors/${id}`)}>
+            Visit Profile
+          </Button>
+        }
+        title={text}
+        trigger="click"
+      >
+        <Avatar src={imageUrl} shape="square" />
+      </Popover>
+    ) : (
+      // <Popover
+      //   content={
+      //     <Button type="link" onClick={() => router.push(`/vendors/${id}`)}>
+      //       Visit Profile
+      //     </Button>
+      //   }
+      //   title={text}
+      //   trigger="click"
+      // >
+      //   <EnvironmentTwoTone
+      //     twoToneColor="#eb2f96"
+      //     style={{ fontSize: "2em" }}
+      //   />
+      // </Popover>
+      <EnvironmentTwoTone twoToneColor="#eb2f96" style={{ fontSize: "3em" }} />
+    )
 
   return (
     <>
-      <div style={{ height: "600px", width: "1900px" }}>
+      <div style={props.sizes}>
         <GoogleMapReact
           onClick={(e) => {
             console.log(e.lat)
@@ -36,19 +53,21 @@ const VendorMap = () => {
           bootstrapURLKeys={{
             key: "AIzaSyDIWgYGDqHsaNGXR4H5odY77HXgXSAatak",
           }}
-          defaultCenter={{ lat: 1.35, lng: 103.82 }}
-          defaultZoom={11.5}
+          defaultCenter={props.defaultCenter}
+          defaultZoom={props.defaultZoom}
           resetBoundsOnResize={true}
         >
           {/* <AnyReactComponent lat={1.35} lng={103.82} text="ree" />
           <AnyReactComponent lat={1.37} lng={103.82} text="ree" /> */}
-          {markerList.map((marker) => {
+          {props.markerList.map((marker) => {
             return (
               <AnyReactComponent
                 key={marker.id}
                 lat={marker.lat}
                 lng={marker.lng}
-                text={marker.id}
+                text={marker.name}
+                id={marker.id}
+                imageUrl={marker.imageUrl}
                 // use your hover state (from store, react-controllables etc...)
               />
             )

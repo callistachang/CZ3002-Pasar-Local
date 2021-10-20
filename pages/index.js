@@ -5,23 +5,23 @@ import GeneralLayout from "../components/layout/GeneralLayout"
 import { getAllDocuments } from "../utils/api"
 
 const Home = () => {
-  const [vendors, setVendors] = useState([])
+  // const [vendors, setVendors] = useState([])
 
-  useAsyncEffect(async () => {
-    setVendors(await getAllDocuments("vendor"))
-  }, [])
+  // useAsyncEffect(async () => {
+  //   setVendors(await getAllDocuments("vendor"))
+  // }, [])
 
   return (
     <>
       <GeneralLayout noPadding>
         <BannerCarousel />
-        {vendors.map((vendor) => (
+        {/* {vendors.map((vendor) => (
           <>
             <p>{vendor.username}</p>
             <p>{vendor.password}</p>
             <p>{vendor.fullname}</p>
           </>
-        ))}
+        ))} */}
       </GeneralLayout>
     </>
   )

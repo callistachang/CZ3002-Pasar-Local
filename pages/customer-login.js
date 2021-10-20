@@ -6,7 +6,7 @@ import React from "react"
 import GeneralLayout from "../components/layout/GeneralLayout"
 
 const CustomerLogin = ({ providers }) => {
-  const router = useRouter()
+  // const router = useRouter()
   const [session, loading] = useSession()
 
   const onFinish = (values) => {
@@ -16,11 +16,6 @@ const CustomerLogin = ({ providers }) => {
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo)
   }
-
-  if (typeof router.query.callbackUrl !== "undefined") {
-    router.push("/")
-  }
-
   return (
     <GeneralLayout activeMenuItem="customer-login">
       <div style={{ padding: "2em" }}>

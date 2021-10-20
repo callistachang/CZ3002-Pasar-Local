@@ -5,6 +5,7 @@ import GeneralLayout from "../../components/layout/GeneralLayout"
 import ProductCardList from "../../components/product/ProductCardList"
 import ProductPageSidebar from "../../components/product/ProductPageSidebar"
 import ProductDetail from "../../components/product/ProductDetail"
+import { getAllIds, getDocument } from "../../utils/api"
 
 const Product = (props) => {
   const router = useRouter()
@@ -33,31 +34,23 @@ const Product = (props) => {
 }
 
 export async function getStaticPaths() {
-  // const res = await fetch('https://.../posts')
-  // const posts = await res.json()
+  const ids = await getAllIds("product")
+  const pathList = ids.map((idx) => {
+    return {
+      params: {
+        id: idx,
+      },
+    }
+  })
 
-  // Get the paths we want to pre-render based on posts
-  // const paths = posts.map((post) => ({
-  //   params: { id: post.id },
-  // }))
-
-  // We'll pre-render only these paths at build time.
-  // { fallback: false } means other routes should 404.
-  // return { paths, fallback: false }
   return {
-    paths: [{ params: { id: "1" } }],
+    paths: pathList,
     fallback: false,
   }
 }
 
-export async function getStaticProps() {
-  const data = {
-    name: "MOTF PREMIUM VISCOSE MIDI SHIRT DRESS",
-    price: 24.48,
-    description:
-      "Please note: This fabric is super breathable, but fairly thick and durable, perfect for fall and winter wear.",
-    tags: ["Women Clothing", "Dress"],
-  }
+export async function getStaticProps(context) {
+  const data = await getDocument("product", context.params.id)
 
   return {
     props: {

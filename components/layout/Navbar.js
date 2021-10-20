@@ -37,14 +37,14 @@ const Navbar = (props) => {
           <Menu.Item
             key="vendors:fashion"
             icon={<SkinOutlined />}
-            onClick={() => router.push("/vendors/categories/Fashion")}
+            onClick={() => router.push("/vendors/categories/fashion")}
           >
             Fashion
           </Menu.Item>
           <Menu.Item
             key="vendors:food"
             icon={<CoffeeOutlined />}
-            onClick={() => router.push("/vendors/categories/Food")}
+            onClick={() => router.push("/vendors/categories/food")}
           >
             Food
           </Menu.Item>

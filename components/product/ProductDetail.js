@@ -2,44 +2,64 @@ import { ShoppingOutlined } from "@ant-design/icons"
 import { Avatar, Badge, Button, Card, Col, Descriptions, Row, Tag } from "antd"
 import { useRouter } from "next/dist/client/router"
 import Image from "next/image"
+import { withRouter } from "next/router"
+import { useState } from "react"
+import useAsyncEffect from "use-async-effect"
+import { getDocument } from "../../utils/api"
 
 const { Meta } = Card
 
 const ProductDetail = (props) => {
-  console.log(props)
+  const router = useRouter()
+  const [vendorData, setVendorData] = useState("")
+  useAsyncEffect(async () => {
+    setVendorData(await getDocument("vendor", props.vendorId))
+    console.log(vendorData)
+  }, [])
+
   return (
     <>
       <Row gutter={[40, 20]}>
         <Col sm={{ span: 10 }}>
-          <Image
-            alt="product"
-            height={800}
-            width={800}
-            src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-          />
+          <Image alt="product" height={800} width={800} src={props.imageUrl} />
         </Col>
         <Col sm={{ span: 14 }} gutter={[16, 24]}>
           <Descriptions title={props.name} bordered>
-            <Descriptions.Item label="Name" span={3}>
-              {props.name}
+            <Descriptions.Item label="Vendor" span={3}>
+              <Avatar src={vendorData.vendorLogoLink} />
+              <a onClick={() => router.push(`/vendors/${vendorData.id}}`)}>
+                {vendorData.name}
+              </a>
             </Descriptions.Item>
             <Descriptions.Item label="Price" span={3}>
               ${props.price}
             </Descriptions.Item>
             <Descriptions.Item label="Tags" span={3}>
-              {props.tags.map((tag) => {
-                let color = tag.length > 5 ? "geekblue" : "green"
-                if (tag === "loser") {
-                  color = "volcano"
-                }
+              {props.tags.map((tag, index) => {
+                const colors = [
+                  "magenta",
+                  "red",
+                  "volcano",
+                  "orange",
+                  "gold",
+                  "lime",
+                  "green",
+                  "cyan",
+                  "blue",
+                  "geekblue",
+                  "purple",
+                ]
                 return (
-                  <Tag color={color} key={tag}>
+                  <Tag color={colors[index % colors.length]} key={tag}>
                     {tag.toUpperCase()}
                   </Tag>
                 )
               })}
             </Descriptions.Item>
-            <Descriptions.Item label="Status">
+            <Descriptions.Item label="Description" span={3}>
+              {props.description}
+            </Descriptions.Item>
+            <Descriptions.Item label="Status" span={3}>
               <Badge status="processing" text="Available" />
             </Descriptions.Item>
           </Descriptions>
@@ -57,7 +77,7 @@ const ProductDetail = (props) => {
                 "https://pasar-local.vercel.app/products/" + props.id
               }
               data-item-description={props.description}
-              data-item-image="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+              data-item-image={props.imageUrl}
               data-item-name={props.name}
             >
               ADD TO BAG

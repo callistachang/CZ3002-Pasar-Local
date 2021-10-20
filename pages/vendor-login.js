@@ -77,8 +77,8 @@ const VendorLogin = () => {
           width="600"
           height="600"
           frameBorder="0"
-          marginHeight="0"
-          marginWidth="0"
+          marginHeight={0}
+          marginWidth={0}
         >
           Loading…
         </iframe>

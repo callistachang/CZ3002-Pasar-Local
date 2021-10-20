@@ -9,7 +9,6 @@ const { Sider, Content, Footer } = Layout
 const Profile = () => {
   const router = useRouter()
   const [session, loading] = useSession()
-  console.log(session)
 
   return (
     <>

@@ -7,7 +7,7 @@ const { Meta } = Card
 const VendorCard = (props) => {
   const router = useRouter()
 
-  const vendorUrl = "/vendors/" + props.title
+  const vendorUrl = "/vendors/" + props.id
 
   return (
     <>
@@ -19,19 +19,17 @@ const VendorCard = (props) => {
               alt="Vendor"
               height={250}
               width={200}
-              src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+              src={props.vendorLogoLink}
             />
           }
           hoverable
           // bordered={false}
         >
           <Meta
-            title={props.title}
-            description={props.title}
+            title={props.name}
+            description={props.description}
             style={{ textAlign: "center" }}
-          >
-            {/* <Tag>Tag 1</Tag> */}
-          </Meta>
+          ></Meta>
         </Card>
       </a>
     </>

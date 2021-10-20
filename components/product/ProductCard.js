@@ -1,13 +1,21 @@
-import { Card, Tag } from "antd"
+import { Avatar, Card, Tag } from "antd"
 import { useRouter } from "next/dist/client/router"
 import Image from "next/image"
+import { useState } from "react"
+import useAsyncEffect from "use-async-effect"
+import { getDocument } from "../../utils/api"
 
 const { Meta } = Card
 
 const ProductCard = (props) => {
   const router = useRouter()
 
-  const productUrl = "/products/" + props.title
+  const [vendorData, setVendorData] = useState("")
+  useAsyncEffect(async () => {
+    setVendorData(await getDocument("vendor", props.vendorId))
+  }, [])
+
+  const productUrl = `/products/${props.id}`
 
   return (
     <>
@@ -17,20 +25,20 @@ const ProductCard = (props) => {
           cover={
             <Image
               alt="product"
-              height={250}
-              width={200}
-              src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+              height={700}
+              width={1000}
+              src={props.imageUrl}
+              quality={100}
             />
           }
           hoverable
         >
           <Meta
-            title={props.title}
-            description={props.title}
-            style={{ textAlign: "center" }}
-          >
-            {/* <Tag>Tag 1</Tag> */}
-          </Meta>
+            avatar={<Avatar src={vendorData.vendorLogoLink}></Avatar>}
+            title={props.name}
+            description={`$${props.price}`}
+            // style={{ textAlign: "center" }}
+          />
         </Card>
       </a>
     </>

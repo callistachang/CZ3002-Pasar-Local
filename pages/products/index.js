@@ -3,8 +3,17 @@ import { Breadcrumb, Col, Row } from "antd"
 import GeneralLayout from "../../components/layout/GeneralLayout"
 import ProductPageSidebar from "../../components/product/ProductPageSidebar"
 import ProductCardList from "../../components/product/ProductCardList"
+import { useState } from "react"
+import useAsyncEffect from "use-async-effect"
+import { getAllDocuments, getVendorsFromCategory } from "../../utils/api"
 
 const ProductsList = () => {
+  const [products, setProducts] = useState([])
+
+  useAsyncEffect(async () => {
+    setProducts(await getAllDocuments("product"))
+  }, [])
+
   return (
     <>
       <GeneralLayout activeMenuItem="products">
@@ -25,7 +34,7 @@ const ProductsList = () => {
             <ProductPageSidebar />
           </Col>
           <Col sm={{ span: 20 }}>
-            <ProductCardList />
+            <ProductCardList data={products} />
           </Col>
         </Row>
       </GeneralLayout>

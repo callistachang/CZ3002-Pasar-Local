@@ -5,10 +5,15 @@ import GeneralLayout from "../../../components/layout/GeneralLayout"
 import VendorCardList from "../../../components/vendor/VendorCardList"
 import VendorPageSidebar from "../../../components/vendor/VendorPageSidebar"
 import VendorMap from "../../../components/vendor/VendorMap"
+import { getVendorsFromCategory } from "../../../utils/api"
 
-const VendorCategory = () => {
+const VendorCategory = (props) => {
   const router = useRouter()
-  const { category } = router.query
+  let { category } = router.query
+  if (typeof category === "string") {
+    category = category.charAt(0).toUpperCase() + category.slice(1)
+  }
+  console.log(props.data)
 
   return (
     <>
@@ -26,8 +31,21 @@ const VendorCategory = () => {
         </Breadcrumb>
 
         <Divider style={{ fontSize: "2em" }}>{category} Vendor Map</Divider>
-        <VendorMap />
-
+        <VendorMap
+          markerList={props.data.map((x) => {
+            return {
+              imageUrl: x.vendorLogoLink,
+              id: x.id,
+              name: x.name,
+              lat: x.latitude,
+              lng: x.longitude,
+            }
+          })}
+          sizes={{ height: "600px", width: "1900px" }}
+          defaultCenter={{ lat: 1.35, lng: 103.82 }}
+          defaultZoom={11.5}
+          popover
+        />
         <Row gutter={[20, 20]} style={{ paddingTop: "2em" }}>
           <Col sm={{ span: 4 }}>
             <VendorPageSidebar />
@@ -36,12 +54,32 @@ const VendorCategory = () => {
             <Divider style={{ fontSize: "2em" }}>
               {category} Vendor List
             </Divider>
-            <VendorCardList />
+            <VendorCardList data={props.data} />
           </Col>
         </Row>
       </GeneralLayout>
     </>
   )
+}
+
+export async function getStaticPaths() {
+  return {
+    paths: [
+      { params: { category: "food" } },
+      { params: { category: "fashion" } },
+    ],
+    fallback: false,
+  }
+}
+
+export async function getStaticProps(context) {
+  const data = await getVendorsFromCategory(context.params.category)
+
+  return {
+    props: {
+      data,
+    },
+  }
 }
 
 export default VendorCategory
