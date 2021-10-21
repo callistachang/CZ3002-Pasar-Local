@@ -1,20 +1,7 @@
-import {
-  Avatar,
-  Badge,
-  Button,
-  Card,
-  Col,
-  Descriptions,
-  Divider,
-  Row,
-  Tag,
-} from "antd"
+import { Col, Descriptions, Divider, Row } from "antd"
 import Image from "next/image"
-import VendorCardList from "./VendorCardList"
-import ProductCardList from "../product/ProductCardList"
 import VendorMap from "./VendorMap"
-import { getProductsFromVendor } from "../../utils/api"
-import { useEffect } from "react"
+import VendorProductCardList from "./VendorProductCardList"
 // import useAsyncEffect from "use-async-effect/types"
 
 const VendorDetail = (props) => {
@@ -73,7 +60,7 @@ const VendorDetail = (props) => {
       >
         Products by {props.name}
       </Divider>
-      <ProductCardList data={props.products} />
+      <VendorProductCardList data={props.products} />
     </>
   )
 }

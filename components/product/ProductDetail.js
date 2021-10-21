@@ -14,7 +14,7 @@ const ProductDetail = (props) => {
   const [vendorData, setVendorData] = useState("")
   useAsyncEffect(async () => {
     setVendorData(await getDocument("vendor", props.vendorId))
-    console.log(vendorData)
+    // console.log(vendorData)
   }, [])
 
   return (

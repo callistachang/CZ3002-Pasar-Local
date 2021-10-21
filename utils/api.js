@@ -15,13 +15,23 @@ import {
 import db from "./firebase"
 
 export async function getAllDocuments(colName) {
-  const docsSnap = await getDocs(collection(db, colName))
-  const docsData = docsSnap.docs.map((doc) => {
+  const ref = collection(db, colName)
+  const q = query(ref, limit(20))
+  const querySnapshot = await getDocs(q)
+  const docsData = querySnapshot.docs.map((doc) => {
     const data = doc.data()
     data.id = doc.id
     return data
   })
   return docsData
+
+  // const docsSnap = await getDocs(collection(db, colName))
+  // const docsData = docsSnap.docs.map((doc) => {
+  //   const data = doc.data()
+  //   data.id = doc.id
+  //   return data
+  // })
+  // return docsData
 }
 
 export async function getDocument(colName, id) {
@@ -76,7 +86,8 @@ export async function getVendorsFromCategory(category) {
 
 export async function getProductsFromVendor(vendorId) {
   const ref = collection(db, "product")
-  const q = query(ref, where("vendorId", "==", vendorId))
+  // const q = query(ref, where("vendorId", "==", vendorId))
+  const q = query(ref, where("vendorId", "==", vendorId), limit(3))
   const querySnapshot = await getDocs(q)
   const docsData = querySnapshot.docs.map((doc) => {
     const data = doc.data()
@@ -87,19 +98,38 @@ export async function getProductsFromVendor(vendorId) {
 }
 
 export async function getAllIds(colName) {
-  const docsSnap = await getDocs(collection(db, colName))
-  const docIdsData = docsSnap.docs.map((doc) => {
+  const ref = collection(db, colName)
+  const q = query(ref, limit(20))
+  const querySnapshot = await getDocs(q)
+
+  const docIdsData = querySnapshot.docs.map((doc) => {
     return doc.id
   })
   return docIdsData
+
+  // const docsSnap = await getDocs(collection(db, colName))
+  // const docIdsData = docsSnap.docs.map((doc) => {
+  //   return doc.id
+  // })
+  // return docIdsData
 }
 
 export async function getAllTags() {
-  // // const q = query(ref, where("vendorId", "==", vendorId))
-  // const docsSnap = await getDocs(collection(db, "product"))
-  // const docsData = docsSnap.docs.map((doc) => {
-  //   return doc.data().tags.keys()
-  // })
-  // return docsData
-  return null
+  const ref = collection(db, "product")
+  const q = query(ref, limit(20))
+  const querySnapshot = await getDocs(q)
+
+  const res = {}
+  querySnapshot.docs.forEach((doc) => {
+    const tags = doc.data().tags
+    for (let i = 0; i < tags.length; i++) {
+      res[tags[i]] = res[tags[i]] ? res[tags[i]] + 1 : 1
+    }
+  })
+  let sorted = Object.fromEntries(
+    Object.entries(res)
+      .sort((a, b) => b[1] - a[1])
+      .filter((x) => x[1] > 1)
+  )
+  return sorted
 }

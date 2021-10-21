@@ -3,7 +3,6 @@ import { Breadcrumb, Col, Row, Divider } from "antd"
 import { useRouter } from "next/dist/client/router"
 import GeneralLayout from "../../../components/layout/GeneralLayout"
 import VendorCardList from "../../../components/vendor/VendorCardList"
-import VendorPageSidebar from "../../../components/vendor/VendorPageSidebar"
 import VendorMap from "../../../components/vendor/VendorMap"
 import { getVendorsFromCategory } from "../../../utils/api"
 
@@ -13,7 +12,7 @@ const VendorCategory = (props) => {
   if (typeof category === "string") {
     category = category.charAt(0).toUpperCase() + category.slice(1)
   }
-  console.log(props.data)
+  // console.log(props.data)
 
   return (
     <>

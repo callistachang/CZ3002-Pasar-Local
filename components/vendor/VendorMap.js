@@ -48,10 +48,10 @@ const VendorMap = (props) => {
     <>
       <div style={props.sizes}>
         <GoogleMapReact
-          onClick={(e) => {
-            console.log(e.lat)
-            console.log(e.lng)
-          }}
+          // onClick={(e) => {
+          //   console.log(e.lat)
+          //   console.log(e.lng)
+          // }}
           bootstrapURLKeys={{
             key: "AIzaSyDIWgYGDqHsaNGXR4H5odY77HXgXSAatak",
           }}

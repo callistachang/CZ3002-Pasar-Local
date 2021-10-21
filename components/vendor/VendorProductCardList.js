@@ -1,5 +1,5 @@
 import { useState } from "react"
-import ProductCard from "./ProductCard"
+import ProductCard from "../product/ProductCard"
 import {
   Col,
   Row,
@@ -11,7 +11,7 @@ import {
   Space,
 } from "antd"
 
-const ProductCardList = ({ data, tags }) => {
+const VendorProductCardList = ({ data }) => {
   const [pageNumber, setPageNumber] = useState(1)
   const [priceRange, setPriceRange] = useState([20, 50])
   const [radioValue, setRadioValue] = useState(1)
@@ -40,7 +40,7 @@ const ProductCardList = ({ data, tags }) => {
 
   return (
     <>
-      <Col sm={{ span: 4 }}>
+      {/* <Col sm={{ span: 4 }}>
         <Divider orientation="left">
           <span style={{ "font-weight": "bold" }}>Price Range</span>
         </Divider>
@@ -68,29 +68,29 @@ const ProductCardList = ({ data, tags }) => {
             ))}
           </Space>
         </Radio.Group>
-      </Col>
-      <Col sm={{ span: 20 }}>
-        <Pagination
-          onChange={(pageNo) => {
-            setPageNumber(pageNo)
-            window.scrollTo({ top: 0, behavior: "smooth" })
-          }}
-          total={productData ? productData.length : 0}
-          style={{ textAlign: "center", paddingTop: "1em" }}
-        />
-        <br />
-        <Row gutter={[40, 32]}>
-          {productData &&
-            productData.length > 0 &&
-            slicedData().map((x, index) => (
-              <Col key={index} sm={{ span: 24 / ROW_SIZE }} gutter={100}>
-                <ProductCard {...x} />
-              </Col>
-            ))}
-        </Row>
-      </Col>
+      </Col> */}
+      {/* <Col sm={{ span: 20 }}> */}
+      <Pagination
+        onChange={(pageNo) => {
+          setPageNumber(pageNo)
+          window.scrollTo({ top: 0, behavior: "smooth" })
+        }}
+        total={productData ? productData.length : 0}
+        style={{ textAlign: "center", paddingTop: "1em" }}
+      />
+      <br />
+      <Row gutter={[40, 32]}>
+        {productData &&
+          productData.length > 0 &&
+          slicedData().map((x, index) => (
+            <Col key={index} sm={{ span: 24 / ROW_SIZE }} gutter={100}>
+              <ProductCard {...x} />
+            </Col>
+          ))}
+      </Row>
+      {/* </Col> */}
     </>
   )
 }
 
-export default ProductCardList
+export default VendorProductCardList

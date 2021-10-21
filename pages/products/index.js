@@ -27,7 +27,7 @@ const ProductsList = (props) => {
         </Breadcrumb>
 
         <Row gutter={[20, 20]} style={{ paddingTop: "2em" }}>
-          <ProductCardList data={props.data} />
+          <ProductCardList data={props.data} tags={props.tags} />
         </Row>
       </GeneralLayout>
     </>
@@ -37,7 +37,6 @@ export async function getStaticProps(context) {
   // const data = await getVendorsFromCategory(context.params.category)
   const data = await getAllDocuments("product")
   const tags = await getAllTags()
-  console.log(tags)
 
   return {
     props: {

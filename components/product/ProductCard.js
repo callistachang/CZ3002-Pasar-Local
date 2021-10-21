@@ -16,6 +16,7 @@ const ProductCard = (props) => {
   }, [])
 
   const productUrl = `/products/${props.id}`
+  // console.log(props)
 
   return (
     <>
