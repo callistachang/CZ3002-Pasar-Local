@@ -62,7 +62,7 @@ const ProductCardList = ({ data, tags }) => {
         <Radio.Group onChange={updateCategoryRadioButtons} value={radioValue}>
           <Space direction="vertical">
             {Object.keys(tags).map((key) => (
-              <Radio value={key}>
+              <Radio key={key} value={key}>
                 {key} ({tags[key]})
               </Radio>
             ))}
