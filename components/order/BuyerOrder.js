@@ -1,11 +1,6 @@
-import { UnorderedListOutlined, UserOutlined } from "@ant-design/icons"
-import { Descriptions, Layout, Menu } from "antd"
-import { useSession } from "next-auth/client"
+import { Descriptions } from "antd"
 
-const { Sider, Content, Footer } = Layout
 const BuyerOrder = () => {
-  const [session, loading] = useSession()
-
   return (
     <>
       todo: add analytics todo:: for each order put in descriptions
@@ -13,7 +8,7 @@ const BuyerOrder = () => {
         <Descriptions.Item label="Order No" span={3}>
           get order number
         </Descriptions.Item>
-        <Descriptions.Item label="Amount Paid">
+        <Descriptions.Item label="Amount Paid" span={3}>
           get amount paid
         </Descriptions.Item>
         <Descriptions.Item label="Order time">get order time</Descriptions.Item>

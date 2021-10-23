@@ -1,6 +1,6 @@
-import { Descriptions, Layout, Menu } from "antd"
-import { useSession } from "next-auth/client"
+import { Descriptions} from "antd"
 
+// todo get buyer info
 const BuyerInfo = () => {
   return (
     <>

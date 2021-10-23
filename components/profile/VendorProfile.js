@@ -4,19 +4,21 @@ import {
   UploadOutlined,
   UserOutlined,
 } from "@ant-design/icons"
-import { Row, Col, Image, Descriptions, Layout, Menu } from "antd"
-import { useSession } from "next-auth/client"
+import {Layout, Menu } from "antd"
 import { useState } from "react"
-import styles from "../home/BannerCarousel.module.css"
 import VendorOrder from "../order/VendorOrder"
 import VendorInfo from "./VendorInfo"
+import VendorViewProduct from "./VendorViewProduct"
+import VendorAddProduct from "./VendorAddProduct"
 
-const { Sider, Content, Footer } = Layout
+const { Sider, Content } = Layout
 const VendorProfile = () => {
   const [render, updateRender] = useState(1)
 
   const components = {
     1: <VendorInfo />, //If vendor clicks on the first menu item, the content shown is VendorInfo
+    2: <VendorViewProduct/>,
+    3: <VendorAddProduct/>,
     4: <VendorOrder />,
   }
 

@@ -1,14 +1,14 @@
-import { Row, Col, Image, Descriptions, Layout, Menu } from "antd"
-import styles from "../home/BannerCarousel.module.css"
+import { Row, Col, Image, Descriptions } from "antd"
 
 const VendorInfo = () => {
   return (
     <Row gutter={24}>
       <Col span={10}>
+        todo: add vendor profile picture and other details
         <Image
-          className={styles.contentStyle}
           alt={"vendor profile picture"}
-          src="https://visme.co/blog/wp-content/uploads/2020/12/header-19.png"
+          src="https://cdn.logo.com/hotlink-ok/logo-social.png"
+          width={"100%"}
         />
       </Col>
       <Col span={12}>
