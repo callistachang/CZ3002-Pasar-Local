@@ -4,7 +4,7 @@ import {
   UploadOutlined,
   UserOutlined,
 } from "@ant-design/icons"
-import {Layout, Menu } from "antd"
+import { Layout, Menu } from "antd"
 import { useState } from "react"
 import VendorOrder from "../order/VendorOrder"
 import VendorInfo from "./VendorInfo"
@@ -17,8 +17,8 @@ const VendorProfile = () => {
 
   const components = {
     1: <VendorInfo />, //If vendor clicks on the first menu item, the content shown is VendorInfo
-    2: <VendorViewProduct/>,
-    3: <VendorAddProduct/>,
+    2: <VendorViewProduct />,
+    3: <VendorAddProduct />,
     4: <VendorOrder />,
   }
 

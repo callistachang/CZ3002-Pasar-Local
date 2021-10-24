@@ -42,7 +42,7 @@ const ProductCardList = ({ data, tags }) => {
     <>
       <Col sm={{ span: 4 }}>
         <Divider orientation="left">
-          <span style={{ "font-weight": "bold" }}>Price Range</span>
+          <span style={{ fontWeight: "bold" }}>Price Range</span>
         </Divider>
         <Slider
           range
@@ -57,7 +57,7 @@ const ProductCardList = ({ data, tags }) => {
         </Row>
 
         <Divider orientation="left">
-          <span style={{ "font-weight": "bold" }}>Categories</span>
+          <span style={{ fontWeight: "bold" }}>Categories</span>
         </Divider>
         <Radio.Group onChange={updateCategoryRadioButtons} value={radioValue}>
           <Space direction="vertical">
