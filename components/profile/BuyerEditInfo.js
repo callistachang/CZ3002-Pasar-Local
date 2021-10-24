@@ -2,6 +2,7 @@ import {Button, Descriptions, Form, Input, InputNumber} from "antd"
 
 // todo get buyer info
 const BuyerEditInfo = () => {
+    const [form] = Form.useForm()
     return (
         <>
             <Form

@@ -3,6 +3,7 @@ import React from "react";
 
 // todo get buyer info
 const VendorEditInfo = () => {
+    const [form] = Form.useForm()
     const { TextArea } = Input;
     const onChange = e => {
         console.log('Change:', e.target.value);
