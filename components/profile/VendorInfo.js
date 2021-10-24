@@ -1,4 +1,4 @@
-import { Row, Col, Image, Descriptions } from "antd"
+import {Row, Col, Image, Descriptions, Button} from "antd"
 
 const VendorInfo = () => {
   return (
@@ -35,8 +35,11 @@ const VendorInfo = () => {
             get user category
           </Descriptions.Item>
         </Descriptions>
+        <br/>
+        <Button name="edit profile" size="large" type="primary">Edit Profile</Button>
       </Col>
     </Row>
+
   )
 }
 
