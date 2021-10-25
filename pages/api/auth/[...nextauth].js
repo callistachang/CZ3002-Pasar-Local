@@ -1,5 +1,10 @@
 import NextAuth from "next-auth"
 import Providers from "next-auth/providers"
+import {
+  getOrCreateDocument,
+  getOrCreateVendor,
+  getVendorFromEmail,
+} from "../../../utils/api"
 import db from "../../../utils/firebase"
 
 export default NextAuth({
@@ -19,13 +24,8 @@ export default NextAuth({
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
-        // TODO: use the email and password to login via firebase
-        // return null if not found
-        const user = {
-          name: "J Smith",
-          email: "jsmith@example.com",
-          image: "vendor", // don't ask me
-        }
+        const user = await getOrCreateVendor(credentials)
+        user.image = "vendor" // don't ask me
         if (user) {
           return user
         } else {
@@ -37,6 +37,12 @@ export default NextAuth({
   callbacks: {
     redirect: ({ url, baseUrl }) => {
       return baseUrl
+    },
+    async session(session, user) {
+      const userData = await getVendorFromEmail(user.email)
+      const updatedData = { ...session.user, ...userData }
+      const finalData = { expires: session.expires, user: { ...updatedData } }
+      return finalData
     },
   },
   // adapter: FirebaseAdapter(db),

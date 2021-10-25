@@ -1,4 +1,4 @@
-import { Form, Input, Button, Upload, Modal, InputNumber } from "antd"
+import { Form, Input, Button, Upload, Modal, InputNumber, Divider } from "antd"
 import { PlusOutlined } from "@ant-design/icons"
 import React from "react"
 
@@ -10,13 +10,38 @@ const VendorAddProduct = () => {
 
   const { TextArea } = Input
 
-  const onChange = (e) => {
-    console.log("Change:", e.target.value)
+  const onFinish = (values) => {
+    console.log("AAAAAAAAAAAAAAAAAAAAA")
+    console.log(values)
+  }
+
+  const onFinishFailed = (values) => {
+    console.log("you failed")
+  }
+
+  const normFile = (e) => {
+    console.log("Upload event:", e)
+    if (Array.isArray(e)) {
+      return e
+    }
+    return e && e.fileList
   }
 
   return (
-    <Form form={form} layout="vertical">
-      <Form.Item label="Upload Image" name="uploadImageWall">
+    <Form
+      form={form}
+      layout="vertical"
+      initialValues={{}}
+      onFinish={onFinish}
+      onFinishFailed={onFinishFailed}
+    >
+      <span style={{ fontSize: "2em" }}>Upload New Product</span>
+      <Divider />
+      <Form.Item
+        label="Upload Image"
+        name="uploadImageWall"
+        getValueFromEvent={normFile}
+      >
         <PicturesWall />
       </Form.Item>
       <Form.Item
@@ -46,10 +71,12 @@ const VendorAddProduct = () => {
         <InputNumber min={0.01} value={value} onChange={setValue} />
       </Form.Item>
       <Form.Item name="description" label="Description">
-        <TextArea rows={4} showCount maxLength={500} onChange={onChange} />
+        <TextArea rows={4} showCount maxLength={500} />
       </Form.Item>
       <Form.Item>
-        <Button type="primary">Submit</Button>
+        <Button type="primary" htmlType="submit">
+          Submit
+        </Button>
       </Form.Item>
     </Form>
   )

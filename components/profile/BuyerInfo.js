@@ -1,22 +1,24 @@
-import {Button, Descriptions} from "antd"
+import { Button, Descriptions } from "antd"
 
 // todo get buyer info
-const BuyerInfo = () => {
+const BuyerInfo = (props) => {
   return (
     <>
       <Descriptions title="Buyer Profile" bordered>
         <Descriptions.Item label="Name" span={3}>
-          get user name
+          {props.name}
         </Descriptions.Item>
         <Descriptions.Item label="Email" span={3}>
-          get user email
+          {props.email}
         </Descriptions.Item>
         <Descriptions.Item label="Address" span={3}>
-          get user address
+          123 Singapore Street
         </Descriptions.Item>
       </Descriptions>
-      <br/>
-      <Button name="edit profile" size="large" type="primary">Edit Profile</Button>
+      {/* <br />
+      <Button name="edit profile" size="large" type="primary">
+        Edit Profile
+      </Button> */}
     </>
   )
 }

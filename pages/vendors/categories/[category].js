@@ -4,7 +4,7 @@ import { useRouter } from "next/dist/client/router"
 import GeneralLayout from "../../../components/layout/GeneralLayout"
 import VendorCardList from "../../../components/vendor/VendorCardList"
 import VendorMap from "../../../components/vendor/VendorMap"
-import { getVendorsFromCategory } from "../../../utils/api"
+import { getOrders, getVendorsFromCategory } from "../../../utils/api"
 
 const VendorCategory = (props) => {
   const router = useRouter()
@@ -66,6 +66,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
   const data = await getVendorsFromCategory(context.params.category)
+  // await getOrders()
 
   return {
     props: {

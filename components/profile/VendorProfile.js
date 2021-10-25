@@ -5,25 +5,29 @@ import {
   UserOutlined,
 } from "@ant-design/icons"
 import { Layout, Menu } from "antd"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import VendorOrder from "../order/VendorOrder"
 import VendorInfo from "./VendorInfo"
 import VendorViewProduct from "./VendorViewProduct"
 import VendorAddProduct from "./VendorAddProduct"
+import { useSession } from "next-auth/client"
+import useAsyncEffect from "use-async-effect"
+import { getVendorFromEmail } from "../../utils/api"
 
 const { Sider, Content } = Layout
-const VendorProfile = () => {
+const VendorProfile = (props) => {
   const [render, updateRender] = useState(1)
-
-  const components = {
-    1: <VendorInfo />, //If vendor clicks on the first menu item, the content shown is VendorInfo
-    2: <VendorViewProduct />,
-    3: <VendorAddProduct />,
-    4: <VendorOrder />,
-  }
+  const [session, loading] = useSession()
 
   const handleMenuClick = ({ key }) => {
     updateRender(key)
+  }
+
+  const components = {
+    1: <VendorInfo userData={session.user} />, //If vendor clicks on the first menu item, the content shown is VendorInfo
+    2: <VendorViewProduct id={props.id} />,
+    3: <VendorAddProduct />,
+    4: <VendorOrder orders={props.orders} />,
   }
 
   return (

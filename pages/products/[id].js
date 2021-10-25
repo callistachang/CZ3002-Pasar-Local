@@ -2,6 +2,7 @@ import { HomeOutlined } from "@ant-design/icons"
 import { Breadcrumb, Col, Divider, Row } from "antd"
 import { useRouter } from "next/router"
 import GeneralLayout from "../../components/layout/GeneralLayout"
+import ProductCard from "../../components/product/ProductCard"
 import ProductCardList from "../../components/product/ProductCardList"
 import ProductDetail from "../../components/product/ProductDetail"
 import { getAllIds, getDocument } from "../../utils/api"
@@ -24,9 +25,25 @@ const Product = (props) => {
 
       <div style={{ padding: "2em 15em" }}>
         <ProductDetail id={id} {...props.data} />
+        <br />
+        <br />
         <Divider orientation="left" style={{ fontSize: "2em" }}>
           More products you might like
         </Divider>
+        <p style={{ fontSize: "1.2em" }}>
+          This feature is currently in beta. The following products were
+          recommended by our Word2Vec model :)!
+        </p>
+        <Row gutter={[40, 32]}>
+          {props.moreProducts &&
+            props.moreProducts.length > 0 &&
+            props.moreProducts.map((x, index) => (
+              <Col key={index} sm={{ span: 4 }} gutter={500}>
+                <ProductCard {...x} />
+              </Col>
+            ))}
+        </Row>
+        {/* <ProductCardList {...props.moreProducts} /> */}
       </div>
     </GeneralLayout>
   )
@@ -50,10 +67,17 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
   const data = await getDocument("product", context.params.id)
+  let moreProducts = await fetch(
+    `https://pasar-local.herokuapp.com/product/suggest?pid=${context.params.id}`
+  ).then((response) => response.json())
+  moreProducts = Object.keys(moreProducts).map(function (key) {
+    return moreProducts[key]
+  })
 
   return {
     props: {
       data,
+      moreProducts,
     },
   }
 }

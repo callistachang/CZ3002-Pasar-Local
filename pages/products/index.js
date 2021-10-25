@@ -36,6 +36,7 @@ const ProductsList = (props) => {
 export async function getStaticProps(context) {
   // const data = await getVendorsFromCategory(context.params.category)
   const data = await getAllDocuments("product")
+  // console.log(data)
   const tags = await getAllTags()
 
   return {

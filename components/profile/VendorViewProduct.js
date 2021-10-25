@@ -1,68 +1,46 @@
-import { Row, Col, Image, Descriptions, Button } from "antd"
-import React from "react"
-import VendorProductCardList from "../vendor/VendorProductCardList"
+import { useState } from "react"
+import ProductCard from "../product/ProductCard"
+import {
+  Col,
+  Row,
+  Pagination,
+  Divider,
+  Input,
+  Radio,
+  Slider,
+  Space,
+} from "antd"
+import { getProductsFromVendor } from "../../utils/api"
+import useAsyncEffect from "use-async-effect"
 
-const VendorViewProduct = () => {
+const VendorViewProduct = ({ id }) => {
+  const [productData, setProductData] = useState([])
+
+  useAsyncEffect(async () => {
+    setProductData(await getProductsFromVendor(id))
+  }, [])
 
   return (
-      // size = size of data and iterate for each data
-    // i'll fill this up with data later
-    //<VendorProductCardList data={[]} />
-      // for i=0 i<size; i++
-      //    <Col span={8}>
-      //    get image
-      //         <Image
-      //           alt={"vendor profile picture"}
-      //           src="https://logos-world.net/wp-content/uploads/2020/12/Lays-Logo.png"
-      //           width={"100%"}
-      //         />
-      //             <Button type={"primary"} block >
-      //                 get item name
-      //             </Button>
-    <Row gutter={[24, 24]}>
-      <Col span={8}>
-          <Image
-              alt={"vendor profile picture"}
-              src="https://logos-world.net/wp-content/uploads/2020/12/Lays-Logo.png"
-              width={"100%"}
-          />
-          <Button type={"primary"} block >
-              get item name
-          </Button>
-
-      </Col>
-      <Col span={8}>
-          <Image
-              alt={"vendor profile picture"}
-              src="https://logos-world.net/wp-content/uploads/2020/12/Lays-Logo.png"
-              width={"100%"}
-          />
-          <Button type={"primary"} block >
-              get item name
-          </Button>
-      </Col>
-        <Col span={8}>
-            <Image
-                alt={"vendor profile picture"}
-                src="https://logos-world.net/wp-content/uploads/2020/12/Lays-Logo.png"
-                width={"100%"}
-            />
-            <Button type={"primary"} block >
-                get item name
-            </Button>
-        </Col>
-
-        <Col span={8}>
-            <Image
-                alt={"vendor profile picture"}
-                src="https://logos-world.net/wp-content/uploads/2020/12/Lays-Logo.png"
-                width={"100%"}
-            />
-            <Button type={"primary"} block >
-                get item name
-            </Button>
-        </Col>
-    </Row>
+    <>
+      <Pagination
+        onChange={(pageNo) => {
+          // setPageNumber(pageNo)
+          window.scrollTo({ top: 0, behavior: "smooth" })
+        }}
+        total={productData ? productData.length : 0}
+        style={{ textAlign: "center", paddingTop: "1em" }}
+      />
+      <br />
+      <Row gutter={[40, 32]}>
+        {productData &&
+          productData.length > 0 &&
+          productData.map((x, index) => (
+            <Col key={index} sm={{ span: 6 }} gutter={100}>
+              <ProductCard {...x} />
+            </Col>
+          ))}
+      </Row>
+    </>
   )
 }
 

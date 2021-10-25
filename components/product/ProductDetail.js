@@ -21,15 +21,25 @@ const ProductDetail = (props) => {
     <>
       <Row gutter={[40, 20]}>
         <Col sm={{ span: 10 }}>
-          <Image alt="product" height={800} width={800} src={props.imageUrl} />
+          {/* <Image alt="product" height={800} width={800} src={props.imageUrl} /> */}
+          <Image
+            alt="product"
+            src={props.imageUrl}
+            layout="responsive"
+            width="100%"
+            height="80%"
+            objectFit="contain"
+            quality={50}
+          />
         </Col>
         <Col sm={{ span: 14 }} gutter={[16, 24]}>
-          <Descriptions title={props.name} bordered>
+          <Descriptions
+            title={<span style={{ fontSize: "1.5em" }}>{props.name}</span>}
+            bordered
+          >
             <Descriptions.Item label="Vendor" span={3}>
               <Avatar src={vendorData.vendorLogoLink} />
-              <a onClick={() => router.push(`/vendors/${vendorData.id}}`)}>
-                {vendorData.name}
-              </a>
+              <a>{vendorData.name}</a>
             </Descriptions.Item>
             <Descriptions.Item label="Price" span={3}>
               ${props.price}

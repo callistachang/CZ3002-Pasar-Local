@@ -11,7 +11,7 @@ module.exports = withAntdLess({
   },
   lessVarsFilePath: "./styles/variables.less",
   lessVarsFilePathAppendToEndOfContent: true,
-  reactStrictMode: true,
+  reactStrictMode: false,
   webpack(config) {
     return config
   },

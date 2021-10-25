@@ -6,12 +6,13 @@ import BuyerOrder from "../order/BuyerOrder"
 import BuyerInfo from "./BuyerInfo"
 
 const { Sider, Content, Footer } = Layout
-const BuyerProfile = () => {
+const BuyerProfile = (props) => {
   const [render, updateRender] = useState(1)
+  const [session, loading] = useSession()
 
   const components = {
-    1: <BuyerInfo />,
-    2: <BuyerOrder />,
+    1: <BuyerInfo {...session.user} />,
+    2: <BuyerOrder orders={props.orders} />,
   }
 
   const handleMenuClick = ({ key }) => {

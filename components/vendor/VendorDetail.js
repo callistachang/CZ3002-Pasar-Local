@@ -11,10 +11,13 @@ const VendorDetail = (props) => {
       <Row gutter={[10, 10]}>
         <Col sm={{ span: 8 }}>
           <Image
-            alt="product"
-            height={400}
-            width={400}
+            alt="Vendor"
             src={props.vendorLogoLink}
+            layout="responsive"
+            width="100%"
+            height="80%"
+            objectFit="contain"
+            quality={50}
           />
         </Col>
         <Col sm={{ span: 16 }} gutter={[10, 10]}>
@@ -54,13 +57,18 @@ const VendorDetail = (props) => {
         defaultCenter={{ lat: props.latitude, lng: props.longitude }}
         defaultZoom={17}
       />
-      <Divider
-        orientation="left"
-        style={{ paddingTop: "0.5em", fontSize: "2em" }}
-      >
-        Products by {props.name}
-      </Divider>
-      <VendorProductCardList data={props.products} />
+
+      {props.noProducts ? null : (
+        <>
+          <Divider
+            orientation="left"
+            style={{ paddingTop: "0.5em", fontSize: "2em" }}
+          >
+            Products by {props.name}
+          </Divider>
+          <VendorProductCardList data={props.products} />
+        </>
+      )}
     </>
   )
 }

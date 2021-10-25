@@ -17,9 +17,12 @@ const VendorCard = (props) => {
           cover={
             <Image
               alt="Vendor"
-              height={250}
-              width={200}
               src={props.vendorLogoLink}
+              layout="responsive"
+              width="100%"
+              height="80%"
+              objectFit="contain"
+              quality={50}
             />
           }
           hoverable

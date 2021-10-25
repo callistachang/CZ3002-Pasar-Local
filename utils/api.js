@@ -15,23 +15,64 @@ import {
 import db from "./firebase"
 
 export async function getAllDocuments(colName) {
-  // const ref = collection(db, colName)
-  // const q = query(ref, limit(20))
-  // const querySnapshot = await getDocs(q)
-  // const docsData = querySnapshot.docs.map((doc) => {
-  //   const data = doc.data()
-  //   data.id = doc.id
-  //   return data
-  // })
-  // return docsData
-
-  const docsSnap = await getDocs(collection(db, colName))
-  const docsData = docsSnap.docs.map((doc) => {
+  const ref = collection(db, colName)
+  const q = query(ref, limit(5))
+  const querySnapshot = await getDocs(q)
+  const docsData = querySnapshot.docs.map((doc) => {
     const data = doc.data()
     data.id = doc.id
     return data
   })
   return docsData
+
+  // const docsSnap = await getDocs(collection(db, colName))
+  // const docsData = docsSnap.docs.map((doc) => {
+  //   const data = doc.data()
+  //   data.id = doc.id
+  //   return data
+  // })
+  // return docsData
+}
+
+export async function getOrCreateVendor(data) {
+  const ref = collection(db, "vendor")
+  const q = query(
+    ref,
+    where("email", "==", data.email),
+    where("password", "==", data.password)
+  )
+  const querySnapshot = await getDocs(q)
+  const docsData = querySnapshot.docs.map((doc) => {
+    const data = doc.data()
+    data.id = doc.id
+    return data
+  })
+  if (docsData.length == 0) {
+    return null
+  } else {
+    return docsData[0]
+  }
+  // let doc = getDocument(colName, id)
+  // if (!doc) {
+  //   doc = addNewDocument(colName, data)
+  // }
+  // return doc
+}
+
+export async function getVendorFromEmail(email) {
+  const ref = collection(db, "vendor")
+  const q = query(ref, where("email", "==", email))
+  const querySnapshot = await getDocs(q)
+  const docsData = querySnapshot.docs.map((doc) => {
+    const data = doc.data()
+    data.id = doc.id
+    return data
+  })
+  if (docsData.length == 0) {
+    return null
+  } else {
+    return docsData[0]
+  }
 }
 
 export async function getDocument(colName, id) {
@@ -51,6 +92,9 @@ export async function addNewDocument(colName, data) {
   try {
     const docRef = await addDoc(collection(db, colName), data)
     console.log("Document written with ID: ", docRef.id)
+    const data = docRef.data()
+    data.id = docRef.id
+    return data
   } catch (e) {
     console.error("Error adding document: ", e)
   }
@@ -98,27 +142,27 @@ export async function getProductsFromVendor(vendorId) {
 }
 
 export async function getAllIds(colName) {
-  // const ref = collection(db, colName)
-  // const q = query(ref, limit(20))
-  // const querySnapshot = await getDocs(q)
+  const ref = collection(db, colName)
+  const q = query(ref, limit(5))
+  const querySnapshot = await getDocs(q)
 
-  // const docIdsData = querySnapshot.docs.map((doc) => {
-  //   return doc.id
-  // })
-  // return docIdsData
-
-  const docsSnap = await getDocs(collection(db, colName))
-  const docIdsData = docsSnap.docs.map((doc) => {
+  const docIdsData = querySnapshot.docs.map((doc) => {
     return doc.id
   })
   return docIdsData
+
+  // const docsSnap = await getDocs(collection(db, colName))
+  // const docIdsData = docsSnap.docs.map((doc) => {
+  //   return doc.id
+  // })
+  // return docIdsData
 }
 
 export async function getAllTags() {
   const ref = collection(db, "product")
-  const querySnapshot = await getDocs(ref)
-  // const q = query(ref, limit(20))
-  // const querySnapshot = await getDocs(q)
+  // const querySnapshot = await getDocs(ref)
+  const q = query(ref, limit(5))
+  const querySnapshot = await getDocs(q)
 
   const res = {}
   querySnapshot.docs.forEach((doc) => {
@@ -133,4 +177,18 @@ export async function getAllTags() {
       .filter((x) => x[1] > 1)
   )
   return sorted
+}
+
+export async function getOrders() {
+  const orders = await fetch(
+    "https://app.snipcart.com/api/orders?offset=0&limit=10",
+    {
+      headers: {
+        Accept: "application/json",
+        Authorization:
+          "Basic U1RfTTJZelltWmpZelV0TVdSallTMDBaV001TFRnek5ETXROVGxsTnpaalpqRXpaakZsTmpNM056QTVNVFUxTmpBek5qUTFOREF6",
+      },
+    }
+  )
+  return await orders.json()
 }

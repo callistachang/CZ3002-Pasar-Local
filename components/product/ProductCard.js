@@ -26,10 +26,12 @@ const ProductCard = (props) => {
           cover={
             <Image
               alt="product"
-              height={700}
-              width={1000}
               src={props.imageUrl}
-              quality={100}
+              layout="responsive"
+              width="100%"
+              height="80%"
+              objectFit="cover"
+              quality={50}
             />
           }
           hoverable
