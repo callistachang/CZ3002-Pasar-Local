@@ -1,20 +1,19 @@
 import {
+  CoffeeOutlined,
   HeartOutlined,
+  LogoutOutlined,
+  ProfileOutlined,
   ShopOutlined,
+  SkinOutlined,
   TeamOutlined,
   UserOutlined,
-  SkinOutlined,
-  CoffeeOutlined,
-  ProfileOutlined,
-  LogoutOutlined,
 } from "@ant-design/icons"
-import { Button, Menu, Row } from "antd"
+import { Menu, Row } from "antd"
 import SubMenu from "antd/lib/menu/SubMenu"
+import { signOut, useSession } from "next-auth/client"
 import { useRouter } from "next/dist/client/router"
 import Cart from "./Cart"
 import styles from "./Layout.module.css"
-import { signOut, useSession } from "next-auth/client"
-import { useState } from "react"
 
 const Navbar = (props) => {
   const router = useRouter()

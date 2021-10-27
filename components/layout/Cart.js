@@ -1,5 +1,4 @@
 import { ShoppingCartOutlined } from "@ant-design/icons"
-import { Button } from "antd"
 
 const Cart = () => {
   return (

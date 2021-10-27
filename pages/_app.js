@@ -1,7 +1,7 @@
-import Head from "next/head"
 import "antd/dist/antd.css"
-import Script from "next/script"
 import { Provider } from "next-auth/client"
+import Head from "next/head"
+import Script from "next/script"
 
 const MyApp = ({ Component, pageProps }) => {
   return (

@@ -1,15 +1,6 @@
+import { Col, Pagination, Row } from "antd"
 import { useState } from "react"
 import ProductCard from "../product/ProductCard"
-import {
-  Col,
-  Row,
-  Pagination,
-  Divider,
-  Input,
-  Radio,
-  Slider,
-  Space,
-} from "antd"
 
 const VendorProductCardList = ({ data }) => {
   const [pageNumber, setPageNumber] = useState(1)
@@ -40,36 +31,6 @@ const VendorProductCardList = ({ data }) => {
 
   return (
     <>
-      {/* <Col sm={{ span: 4 }}>
-        <Divider orientation="left">
-          <span style={{ "font-weight": "bold" }}>Price Range</span>
-        </Divider>
-        <Slider
-          range
-          onAfterChange={updatePriceRange}
-          defaultValue={priceRange}
-          min={priceRange[0]}
-          max={priceRange[1]}
-        />
-        <Row justify="space-between">
-          <Col>${priceRange[0]}</Col>
-          <Col>${priceRange[1]}</Col>
-        </Row>
-
-        <Divider orientation="left">
-          <span style={{ "font-weight": "bold" }}>Categories</span>
-        </Divider>
-        <Radio.Group onChange={updateCategoryRadioButtons} value={radioValue}>
-          <Space direction="vertical">
-            {Object.keys(tags).map((key) => (
-              <Radio value={key}>
-                {key} ({tags[key]})
-              </Radio>
-            ))}
-          </Space>
-        </Radio.Group>
-      </Col> */}
-      {/* <Col sm={{ span: 20 }}> */}
       <Pagination
         onChange={(pageNo) => {
           setPageNumber(pageNo)

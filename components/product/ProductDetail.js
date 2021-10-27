@@ -2,19 +2,15 @@ import { ShoppingOutlined } from "@ant-design/icons"
 import { Avatar, Badge, Button, Card, Col, Descriptions, Row, Tag } from "antd"
 import { useRouter } from "next/dist/client/router"
 import Image from "next/image"
-import { withRouter } from "next/router"
 import { useState } from "react"
 import useAsyncEffect from "use-async-effect"
 import { getDocument } from "../../utils/api"
-
-const { Meta } = Card
 
 const ProductDetail = (props) => {
   const router = useRouter()
   const [vendorData, setVendorData] = useState("")
   useAsyncEffect(async () => {
     setVendorData(await getDocument("vendor", props.vendorId))
-    // console.log(vendorData)
   }, [])
 
   return (

@@ -1,15 +1,6 @@
+import { Col, Divider, Pagination, Radio, Row, Slider, Space } from "antd"
 import { useState } from "react"
 import ProductCard from "./ProductCard"
-import {
-  Col,
-  Row,
-  Pagination,
-  Divider,
-  Input,
-  Radio,
-  Slider,
-  Space,
-} from "antd"
 
 const ProductCardList = ({ data, tags }) => {
   const [pageNumber, setPageNumber] = useState(1)

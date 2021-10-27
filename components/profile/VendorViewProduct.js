@@ -1,17 +1,8 @@
+import { Col, Pagination, Row } from "antd"
 import { useState } from "react"
-import ProductCard from "../product/ProductCard"
-import {
-  Col,
-  Row,
-  Pagination,
-  Divider,
-  Input,
-  Radio,
-  Slider,
-  Space,
-} from "antd"
-import { getProductsFromVendor } from "../../utils/api"
 import useAsyncEffect from "use-async-effect"
+import { getProductsFromVendor } from "../../utils/api"
+import ProductCard from "../product/ProductCard"
 
 const VendorViewProduct = ({ id }) => {
   const [productData, setProductData] = useState([])
@@ -24,7 +15,6 @@ const VendorViewProduct = ({ id }) => {
     <>
       <Pagination
         onChange={(pageNo) => {
-          // setPageNumber(pageNo)
           window.scrollTo({ top: 0, behavior: "smooth" })
         }}
         total={productData ? productData.length : 0}

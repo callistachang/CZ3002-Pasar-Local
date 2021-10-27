@@ -1,4 +1,4 @@
-import { Button, Descriptions } from "antd"
+import { Descriptions } from "antd"
 
 // todo get buyer info
 const BuyerInfo = (props) => {
@@ -15,10 +15,6 @@ const BuyerInfo = (props) => {
           123 Singapore Street
         </Descriptions.Item>
       </Descriptions>
-      {/* <br />
-      <Button name="edit profile" size="large" type="primary">
-        Edit Profile
-      </Button> */}
     </>
   )
 }

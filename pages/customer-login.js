@@ -1,21 +1,10 @@
 import { GoogleCircleFilled } from "@ant-design/icons"
-import { Button, Form, Input, Row, Space, Divider } from "antd"
-import { getProviders, signIn, useSession, signOut } from "next-auth/client"
-import { useRouter } from "next/router"
+import { Button, Divider, Row } from "antd"
+import { getProviders, signIn, useSession } from "next-auth/client"
 import React from "react"
 import GeneralLayout from "../components/layout/GeneralLayout"
 
 const CustomerLogin = ({ providers }) => {
-  // const router = useRouter()
-  const [session, loading] = useSession()
-
-  const onFinish = (values) => {
-    console.log("Success:", values)
-  }
-
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo)
-  }
   return (
     <GeneralLayout activeMenuItem="customer-login">
       <div style={{ padding: "2em" }}>

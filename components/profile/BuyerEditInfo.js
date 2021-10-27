@@ -1,4 +1,4 @@
-import { Button, Descriptions, Form, Input, InputNumber } from "antd"
+import { Button, Form, Input } from "antd"
 
 // todo get buyer info
 const BuyerEditInfo = () => {

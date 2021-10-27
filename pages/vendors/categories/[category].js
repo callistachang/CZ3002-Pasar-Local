@@ -1,10 +1,10 @@
 import { HomeOutlined } from "@ant-design/icons"
-import { Breadcrumb, Col, Row, Divider } from "antd"
+import { Breadcrumb, Divider } from "antd"
 import { useRouter } from "next/dist/client/router"
 import GeneralLayout from "../../../components/layout/GeneralLayout"
 import VendorCardList from "../../../components/vendor/VendorCardList"
 import VendorMap from "../../../components/vendor/VendorMap"
-import { getOrders, getVendorsFromCategory } from "../../../utils/api"
+import { getVendorsFromCategory } from "../../../utils/api"
 
 const VendorCategory = (props) => {
   const router = useRouter()
@@ -12,7 +12,6 @@ const VendorCategory = (props) => {
   if (typeof category === "string") {
     category = category.charAt(0).toUpperCase() + category.slice(1)
   }
-  // console.log(props.data)
 
   return (
     <>
@@ -66,7 +65,6 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
   const data = await getVendorsFromCategory(context.params.category)
-  // await getOrders()
 
   return {
     props: {

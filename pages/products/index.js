@@ -1,14 +1,8 @@
 import { HomeOutlined } from "@ant-design/icons"
-import { Breadcrumb, Col, Row } from "antd"
+import { Breadcrumb, Row } from "antd"
 import GeneralLayout from "../../components/layout/GeneralLayout"
 import ProductCardList from "../../components/product/ProductCardList"
-import { useState } from "react"
-import useAsyncEffect from "use-async-effect"
-import {
-  getAllDocuments,
-  getAllTags,
-  getVendorsFromCategory,
-} from "../../utils/api"
+import { getAllDocuments, getAllTags } from "../../utils/api"
 
 const ProductsList = (props) => {
   return (
@@ -21,9 +15,7 @@ const ProductsList = (props) => {
           <Breadcrumb.Item href="/product-categories">
             Marketplace
           </Breadcrumb.Item>
-          <Breadcrumb.Item href="">
-            {/* <span>{category}</span> */}
-          </Breadcrumb.Item>
+          <Breadcrumb.Item href=""></Breadcrumb.Item>
         </Breadcrumb>
 
         <Row gutter={[20, 20]} style={{ paddingTop: "2em" }}>
@@ -34,9 +26,7 @@ const ProductsList = (props) => {
   )
 }
 export async function getStaticProps(context) {
-  // const data = await getVendorsFromCategory(context.params.category)
   const data = await getAllDocuments("product")
-  // console.log(data)
   const tags = await getAllTags()
 
   return {

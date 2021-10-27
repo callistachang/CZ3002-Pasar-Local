@@ -1,5 +1,5 @@
 import { UnorderedListOutlined, UserOutlined } from "@ant-design/icons"
-import { Descriptions, Layout, Menu } from "antd"
+import { Layout, Menu } from "antd"
 import { useSession } from "next-auth/client"
 import { useState } from "react"
 import BuyerOrder from "../order/BuyerOrder"

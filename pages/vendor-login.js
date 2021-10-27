@@ -1,4 +1,4 @@
-import { Button, Input, Space, Form, Divider } from "antd"
+import { Button, Divider, Form, Input, Space } from "antd"
 import { signIn } from "next-auth/client"
 import React from "react"
 import GeneralLayout from "../components/layout/GeneralLayout"

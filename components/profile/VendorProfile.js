@@ -5,14 +5,12 @@ import {
   UserOutlined,
 } from "@ant-design/icons"
 import { Layout, Menu } from "antd"
-import { useEffect, useState } from "react"
+import { useSession } from "next-auth/client"
+import { useState } from "react"
 import VendorOrder from "../order/VendorOrder"
+import VendorAddProduct from "./VendorAddProduct"
 import VendorInfo from "./VendorInfo"
 import VendorViewProduct from "./VendorViewProduct"
-import VendorAddProduct from "./VendorAddProduct"
-import { useSession } from "next-auth/client"
-import useAsyncEffect from "use-async-effect"
-import { getVendorFromEmail } from "../../utils/api"
 
 const { Sider, Content } = Layout
 const VendorProfile = (props) => {

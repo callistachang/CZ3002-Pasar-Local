@@ -2,10 +2,8 @@ import { Col, Descriptions, Divider, Row } from "antd"
 import Image from "next/image"
 import VendorMap from "./VendorMap"
 import VendorProductCardList from "./VendorProductCardList"
-// import useAsyncEffect from "use-async-effect/types"
 
 const VendorDetail = (props) => {
-  // useAsyncEffect(async () => {})
   return (
     <>
       <Row gutter={[10, 10]}>
@@ -72,13 +70,4 @@ const VendorDetail = (props) => {
     </>
   )
 }
-// export async function getStaticProps(context) {
-//   const data = await getProductsFromVendor(context.params.category)
-
-//   return {
-//     props: {
-//       data,
-//     },
-//   }
-// }
 export default VendorDetail

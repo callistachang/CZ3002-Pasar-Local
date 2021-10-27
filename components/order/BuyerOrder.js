@@ -1,4 +1,4 @@
-import { Descriptions, Table } from "antd"
+import { Descriptions } from "antd"
 
 const BuyerOrder = (props) => {
   console.log(props.orders)

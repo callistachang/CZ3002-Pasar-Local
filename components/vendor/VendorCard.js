@@ -1,4 +1,4 @@
-import { Card, Tag } from "antd"
+import { Card } from "antd"
 import { useRouter } from "next/dist/client/router"
 import Image from "next/image"
 
@@ -13,7 +13,6 @@ const VendorCard = (props) => {
     <>
       <a href={vendorUrl} onClick={() => router.push(vendorUrl)}>
         <Card
-          // style={{ width: 300 }}
           cover={
             <Image
               alt="Vendor"
@@ -26,7 +25,6 @@ const VendorCard = (props) => {
             />
           }
           hoverable
-          // bordered={false}
         >
           <Meta
             title={props.name}

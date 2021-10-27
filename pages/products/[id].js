@@ -3,7 +3,6 @@ import { Breadcrumb, Col, Divider, Row } from "antd"
 import { useRouter } from "next/router"
 import GeneralLayout from "../../components/layout/GeneralLayout"
 import ProductCard from "../../components/product/ProductCard"
-import ProductCardList from "../../components/product/ProductCardList"
 import ProductDetail from "../../components/product/ProductDetail"
 import { getAllIds, getDocument } from "../../utils/api"
 
@@ -43,7 +42,6 @@ const Product = (props) => {
               </Col>
             ))}
         </Row>
-        {/* <ProductCardList {...props.moreProducts} /> */}
       </div>
     </GeneralLayout>
   )

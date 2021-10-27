@@ -1,28 +1,17 @@
-import { Layout, Menu } from "antd"
+import { Layout } from "antd"
 import { useSession } from "next-auth/client"
-import { Router, useRouter } from "next/dist/client/router"
+import { useRouter } from "next/dist/client/router"
 import { useState } from "react"
-import useAsyncEffect from "use-async-effect"
 import GeneralLayout from "../components/layout/GeneralLayout"
 import BuyerProfile from "../components/profile/BuyerProfile"
 import VendorProfile from "../components/profile/VendorProfile"
-import {
-  getOrders,
-  getProductsFromVendor,
-  getVendorFromEmail,
-} from "../utils/api"
+import { getOrders } from "../utils/api"
 
 const { Sider, Content, Footer } = Layout
 const Profile = (props) => {
   const router = useRouter()
   const [session, loading] = useSession()
   const [vendorProducts, setVendorProducts] = useState([])
-
-  // if (session && session.user.image == "vendor") {
-  //   useAsyncEffect(async () => {
-  //     setVendorProducts(await getProductsFromVendor(session.user.id))
-  //   }, [])
-  // }
 
   return (
     <>
@@ -44,8 +33,6 @@ const Profile = (props) => {
 }
 
 export async function getStaticProps(context) {
-  // const data = await getDocument("vendor", context.params.id)
-  // const products = await getProductsFromVendor(context.params.id)
   const orders = await getOrders()
 
   return {

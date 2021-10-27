@@ -1,4 +1,4 @@
-import { Descriptions, Switch, Table } from "antd"
+import { Descriptions, Switch } from "antd"
 
 const VendorOrder = (props) => {
   console.log(props.orders)

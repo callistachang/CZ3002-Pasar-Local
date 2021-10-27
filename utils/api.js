@@ -1,37 +1,25 @@
 import {
   addDoc,
   collection,
-  doc,
-  getDocs,
-  setDoc,
-  getDoc,
   deleteDoc,
-  updateDoc,
+  doc,
+  getDoc,
+  getDocs,
   query,
+  setDoc,
+  updateDoc,
   where,
-  orderBy,
-  limit,
 } from "firebase/firestore"
 import db from "./firebase"
 
 export async function getAllDocuments(colName) {
-  const ref = collection(db, colName)
-  const q = query(ref, limit(5))
-  const querySnapshot = await getDocs(q)
-  const docsData = querySnapshot.docs.map((doc) => {
+  const docsSnap = await getDocs(collection(db, colName))
+  const docsData = docsSnap.docs.map((doc) => {
     const data = doc.data()
     data.id = doc.id
     return data
   })
   return docsData
-
-  // const docsSnap = await getDocs(collection(db, colName))
-  // const docsData = docsSnap.docs.map((doc) => {
-  //   const data = doc.data()
-  //   data.id = doc.id
-  //   return data
-  // })
-  // return docsData
 }
 
 export async function getOrCreateVendor(data) {
@@ -52,11 +40,6 @@ export async function getOrCreateVendor(data) {
   } else {
     return docsData[0]
   }
-  // let doc = getDocument(colName, id)
-  // if (!doc) {
-  //   doc = addNewDocument(colName, data)
-  // }
-  // return doc
 }
 
 export async function getVendorFromEmail(email) {
@@ -131,7 +114,6 @@ export async function getVendorsFromCategory(category) {
 export async function getProductsFromVendor(vendorId) {
   const ref = collection(db, "product")
   const q = query(ref, where("vendorId", "==", vendorId))
-  // const q = query(ref, where("vendorId", "==", vendorId), limit(3))
   const querySnapshot = await getDocs(q)
   const docsData = querySnapshot.docs.map((doc) => {
     const data = doc.data()
@@ -142,27 +124,16 @@ export async function getProductsFromVendor(vendorId) {
 }
 
 export async function getAllIds(colName) {
-  const ref = collection(db, colName)
-  const q = query(ref, limit(5))
-  const querySnapshot = await getDocs(q)
-
-  const docIdsData = querySnapshot.docs.map((doc) => {
+  const docsSnap = await getDocs(collection(db, colName))
+  const docIdsData = docsSnap.docs.map((doc) => {
     return doc.id
   })
   return docIdsData
-
-  // const docsSnap = await getDocs(collection(db, colName))
-  // const docIdsData = docsSnap.docs.map((doc) => {
-  //   return doc.id
-  // })
-  // return docIdsData
 }
 
 export async function getAllTags() {
   const ref = collection(db, "product")
-  // const querySnapshot = await getDocs(ref)
-  const q = query(ref, limit(5))
-  const querySnapshot = await getDocs(q)
+  const querySnapshot = await getDocs(ref)
 
   const res = {}
   querySnapshot.docs.forEach((doc) => {

@@ -1,19 +1,8 @@
-// import { useRouter } from "next/router"
-
-// const Vendor = () => {
-//   const router = useRouter()
-//   const { id } = router.query
-//   return <div>{id}</div>
-// }
-
-// export default Vendor
 import { HomeOutlined } from "@ant-design/icons"
-import { Breadcrumb, Col, Row } from "antd"
+import { Breadcrumb } from "antd"
 import { useRouter } from "next/router"
-import { Divider } from "rc-menu"
 import GeneralLayout from "../../components/layout/GeneralLayout"
 import VendorDetail from "../../components/vendor/VendorDetail"
-import VendorMap from "../../components/vendor/VendorMap"
 import { getAllIds, getDocument, getProductsFromVendor } from "../../utils/api"
 
 const Vendor = (props) => {
@@ -31,7 +20,6 @@ const Vendor = (props) => {
           <span>{props.data.name}</span>
         </Breadcrumb.Item>
       </Breadcrumb>
-      {/* <Divider style={{ fontSize: "2em" }}>Vendor Map</Divider> */}
 
       <div style={{ padding: "2em 15em" }}>
         <VendorDetail id={id} {...props.data} products={props.products} />

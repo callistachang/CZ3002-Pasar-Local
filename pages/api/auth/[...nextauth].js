@@ -1,11 +1,6 @@
 import NextAuth from "next-auth"
 import Providers from "next-auth/providers"
-import {
-  getOrCreateDocument,
-  getOrCreateVendor,
-  getVendorFromEmail,
-} from "../../../utils/api"
-import db from "../../../utils/firebase"
+import { getOrCreateVendor, getVendorFromEmail } from "../../../utils/api"
 
 export default NextAuth({
   providers: [
@@ -45,7 +40,6 @@ export default NextAuth({
       return finalData
     },
   },
-  // adapter: FirebaseAdapter(db),
   pages: {
     signIn: "/customer-login",
     newUser: "/", // If set, new users will be directed here on first sign in

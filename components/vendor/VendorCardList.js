@@ -1,4 +1,4 @@
-import { Divider, Col, Pagination, Row } from "antd"
+import { Col, Pagination, Row } from "antd"
 import { useState } from "react"
 import VendorCard from "./VendorCard"
 
@@ -7,9 +7,6 @@ const VendorCardList = ({ data }) => {
   const ROW_SIZE = 4 // should be a divisor of 24
   const COL_SIZE = 3
   const NUM_VENDORS_PER_PAGE = ROW_SIZE * COL_SIZE
-
-  // temp - replace with actual data
-  // const data = Array.from({ length: 25 }, (_, i) => i + 1)
 
   const slicedData = () =>
     data.slice(
@@ -22,7 +19,6 @@ const VendorCardList = ({ data }) => {
       <Pagination
         onChange={(pageNo) => {
           setPageNumber(pageNo)
-          // window.scrollTo({ top: 0, behavior: "smooth" })
         }}
         total={data ? data.length : 0}
         style={{ textAlign: "center" }}
