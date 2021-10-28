@@ -34,7 +34,7 @@ const BuyerProfile = (props) => {
               My Profile
             </Menu.Item>
             <Menu.Item key="2" icon={<UnorderedListOutlined />}>
-              View Orders
+              View Purchases
             </Menu.Item>
           </Menu>
         </Sider>
