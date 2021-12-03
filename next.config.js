@@ -5,6 +5,7 @@ module.exports = withAntdLess({
     domains: [
       "gw.alipayobjects.com",
       "img5a.flixcart.com",
+      "img7a.flixcart.com",
       "img6a.flixcart.com",
       "firebasestorage.googleapis.com",
     ],
